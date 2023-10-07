@@ -4,11 +4,13 @@ package duo.gg.server.api.dto.match;
 import duo.gg.server.api.constant.GameModeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class InfoDto {
     // Unix timestamp for when the game is created on the game server (i.e., the loading screen).
     public Long gameCreation;

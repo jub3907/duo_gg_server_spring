@@ -3,9 +3,12 @@ package duo.gg.server.api.dto.summoner;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class SummonerDto {
 
     // Encrypted account ID. Max length 56 characters.

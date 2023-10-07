@@ -2,9 +2,12 @@ package duo.gg.server.api.dto.account;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class AccountDto {
     public String puuid;
 

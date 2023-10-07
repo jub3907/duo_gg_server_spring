@@ -3,9 +3,11 @@ package duo.gg.server.api.dto.match;
 import duo.gg.server.api.dto.perk.PerksDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ParticipantDto {
     // 플레이어, 참여자 정보
     public String puuid;

@@ -3,9 +3,12 @@ package duo.gg.server.api.dto.league;
 import duo.gg.server.api.dto.league.MiniSeriesDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class LeagueEntryDto {
 
     public String leagueId;

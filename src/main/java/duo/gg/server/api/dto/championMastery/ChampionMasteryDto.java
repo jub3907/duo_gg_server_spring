@@ -2,9 +2,12 @@ package duo.gg.server.api.dto.championMastery;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ChampionMasteryDto {
     // Player Universal Unique Identifier. Exact length of 78 characters. (Encrypted)
     // 플레이어의 고유 ID값. 78글자로 이루어짐
