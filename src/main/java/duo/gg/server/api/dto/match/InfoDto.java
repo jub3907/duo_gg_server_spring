@@ -1,7 +1,7 @@
 package duo.gg.server.api.dto.match;
 
 
-import duo.gg.server.api.constant.GameMode;
+import duo.gg.server.api.constant.GameModeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -32,7 +32,7 @@ public class InfoDto {
 
     // Refer to the Game Constants documentation.
     // https://developer.riotgames.com/docs/lol#general_game-constants
-    public GameMode gameMode;
+    public GameModeEnum gameMode;
 
     public String gameName;
 

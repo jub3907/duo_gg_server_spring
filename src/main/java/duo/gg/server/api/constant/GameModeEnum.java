@@ -1,6 +1,6 @@
 package duo.gg.server.api.constant;
 
-public enum GameMode {
+public enum GameModeEnum {
     CLASSIC,        // Classic Summoner's Rift and Twisted Treeline games
     ODIN,           //  Dominion/Crystal Scar games
     ARAM,            //ARAM games
