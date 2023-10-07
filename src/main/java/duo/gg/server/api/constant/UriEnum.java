@@ -5,7 +5,6 @@ public enum UriEnum {
     GET_ACCOUNT_BY_PUUID,           // /riot/account/v1/accounts/by-puuid/{puuid}
     GET_ACCOUNT_BY_RIOT_ID,         // /riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}
     GET_ACCOUNT_BY_ACCESS_TOKEN,    // /riot/account/v1/accounts/me
-    GET_ACTIVE_SHARD,               // /riot/account/v1/active-shards/by-game/{game}/by-puuid/{puuid}
 
     // CHAMPION-MASTERY
     GET_CHAMPION_MASTERIES_BY_PUUID,                        // /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}
