@@ -27,6 +27,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 //	runtimeOnly 'com.mysql:mysql-connector-j'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux'
+	implementation "me.paulschwarz:spring-dotenv:4.0.0"
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
