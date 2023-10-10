@@ -3,13 +3,12 @@ package duo.gg.server.api.dto.league;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 // LEAGUE-V4, /lol/league/v4/challengerleagues/by-queue/{queue}
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LeagueItemDto {
+public class LeagueItemApiResult {
 
     private boolean freshBlood;
 
@@ -18,7 +17,7 @@ public class LeagueItemDto {
 
     private String summonerName;
 
-    private MiniSeriesDto miniSeries;
+    private MiniSeriesApiResult miniSeries;
 
     private boolean inactive;
 

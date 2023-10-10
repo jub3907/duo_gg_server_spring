@@ -1,23 +1,18 @@
 package duo.gg.server.api.service;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import duo.gg.server.api.constant.DivisionEnum;
 import duo.gg.server.api.constant.QueueEnum;
 import duo.gg.server.api.constant.TierEnum;
-import duo.gg.server.api.dto.account.AccountDto;
-import duo.gg.server.api.dto.champion.ChampionInfoDto;
-import duo.gg.server.api.dto.championMastery.ChampionMasteryDto;
-import duo.gg.server.api.dto.league.LeagueEntryDto;
-import duo.gg.server.api.dto.league.LeagueListDto;
-import duo.gg.server.api.dto.match.MatchDto;
-import duo.gg.server.api.dto.match.MatchTimelineDto;
-import duo.gg.server.api.dto.summoner.SummonerDto;
+import duo.gg.server.api.dto.account.AccountApiResult;
+import duo.gg.server.api.dto.champion.ChampionInfoApiResult;
+import duo.gg.server.api.dto.championMastery.ChampionMasteryApiResult;
+import duo.gg.server.api.dto.league.LeagueEntryApiResult;
+import duo.gg.server.api.dto.league.LeagueListApiResult;
+import duo.gg.server.api.dto.match.MatchApiResult;
+import duo.gg.server.api.dto.match.MatchTimelineApiResult;
+import duo.gg.server.api.dto.summoner.SummonerApiResult;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -31,7 +26,6 @@ import reactor.util.retry.Retry;
 
 import java.time.Duration;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -113,11 +107,11 @@ public class ApiService {
      * @param puuid puuid
      * @return AccountDto
      */
-    public AccountDto getAccountByPuuid(String puuid) {
+    public AccountApiResult getAccountByPuuid(String puuid) {
         WebClient webClient = getWebClient("https://asia.api.riotgames.com");
         String uri = "/riot/account/v1/accounts/by-puuid/" + puuid;
 
-        return apiCall(webClient, uri, AccountDto.class);
+        return apiCall(webClient, uri, AccountApiResult.class);
     }
 
     /**
@@ -128,11 +122,11 @@ public class ApiService {
      * @param gameName gameName
      * @return AccountDto
      */
-    public AccountDto getAccountByRiotId(String gameName, String tagLine) {
+    public AccountApiResult getAccountByRiotId(String gameName, String tagLine) {
         WebClient webClient = getWebClient("https://asia.api.riotgames.com");
         String uri = "/riot/account/v1/accounts/by-riot-id/" + gameName + "/" + tagLine;
 
-        return apiCall(webClient, uri, AccountDto.class);
+        return apiCall(webClient, uri, AccountApiResult.class);
     }
 
     /**
@@ -140,11 +134,11 @@ public class ApiService {
      * @param Authorization AccessToken
      * @return AccountDto
      */
-    public AccountDto getAccountByAccessToken(String Authorization) {
+    public AccountApiResult getAccountByAccessToken(String Authorization) {
         WebClient webClient = getWebClient("https://asia.api.riotgames.com", Authorization);
         String uri = "/riot/account/v1/accounts/me";
 
-        return apiCall(webClient, uri, AccountDto.class);
+        return apiCall(webClient, uri, AccountApiResult.class);
     }
 
 
@@ -156,11 +150,11 @@ public class ApiService {
      * @param encryptedPUUID encryptedPUUID
      * @return List<ChampionMasteryDto>
      */
-    public List<ChampionMasteryDto> getChampionMasteriesByPuuid(String encryptedPUUID) {
+    public List<ChampionMasteryApiResult> getChampionMasteriesByPuuid(String encryptedPUUID) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-puuid/" + encryptedPUUID;
 
-        return apiCallAsDtoList(webClient, uri, ChampionMasteryDto[].class);
+        return apiCallAsDtoList(webClient, uri, ChampionMasteryApiResult[].class);
     }
 
     /**
@@ -169,11 +163,11 @@ public class ApiService {
      * @param championId championId
      * @return ChampionMasteryDto
      */
-    public ChampionMasteryDto getChampionMasteryByPuuidAndChampionId(String encryptedPUUID, Long championId) {
+    public ChampionMasteryApiResult getChampionMasteryByPuuidAndChampionId(String encryptedPUUID, Long championId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-puuid/" + encryptedPUUID +"/by-champion/" + championId;
 
-        return apiCall(webClient, uri, ChampionMasteryDto.class);
+        return apiCall(webClient, uri, ChampionMasteryApiResult.class);
     }
 
     /**
@@ -182,14 +176,14 @@ public class ApiService {
      * @param count default 3
      * @return List<ChampionMasteryDto>
      */
-    public List<ChampionMasteryDto> getChampionMasteriesByPuuidDescending(String encryptedPUUID, int count) {
+    public List<ChampionMasteryApiResult> getChampionMasteriesByPuuidDescending(String encryptedPUUID, int count) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-puuid/" + encryptedPUUID + "/top/?count=" + count;
 
-        return apiCallAsDtoList(webClient, uri, ChampionMasteryDto[].class);
+        return apiCallAsDtoList(webClient, uri, ChampionMasteryApiResult[].class);
     }
 
-    public List<ChampionMasteryDto> getChampionMasteriesByPuuidDescending(String encryptedPUUID) {
+    public List<ChampionMasteryApiResult> getChampionMasteriesByPuuidDescending(String encryptedPUUID) {
         return getChampionMasteriesByPuuidDescending(encryptedPUUID, 3);
     }
 
@@ -198,11 +192,11 @@ public class ApiService {
      * @param encryptedSummonerId encryptedSummonerId
      * @return List<ChampionMasteryDto>
      */
-    public List<ChampionMasteryDto> getChampionMasteriesBySummonerId(String encryptedSummonerId) {
+    public List<ChampionMasteryApiResult> getChampionMasteriesBySummonerId(String encryptedSummonerId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + encryptedSummonerId;
 
-        return apiCallAsDtoList(webClient, uri, ChampionMasteryDto[].class);
+        return apiCallAsDtoList(webClient, uri, ChampionMasteryApiResult[].class);
     }
 
     /**
@@ -211,11 +205,11 @@ public class ApiService {
      * @param championId champion's id
      * @return Champion Mastery Dto
      */
-    public ChampionMasteryDto getChampionMasteryBySummonerIdAndChampionId(String encryptedSummonerId, Long championId) {
+    public ChampionMasteryApiResult getChampionMasteryBySummonerIdAndChampionId(String encryptedSummonerId, Long championId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + encryptedSummonerId + "/by-champion/" + championId;
 
-        return apiCall(webClient, uri, ChampionMasteryDto.class);
+        return apiCall(webClient, uri, ChampionMasteryApiResult.class);
     }
 
     /**
@@ -224,14 +218,14 @@ public class ApiService {
      * @param count default 3
      * @return List of Champion Mastery Dto
      */
-    public List<ChampionMasteryDto> getChampionMasteriesBySummonerIdDescending(String encryptedSummonerId, int count) {
+    public List<ChampionMasteryApiResult> getChampionMasteriesBySummonerIdDescending(String encryptedSummonerId, int count) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + encryptedSummonerId + "/top?count=" + count;
 
-        return apiCallAsDtoList(webClient, uri, ChampionMasteryDto[].class);
+        return apiCallAsDtoList(webClient, uri, ChampionMasteryApiResult[].class);
     }
 
-    public List<ChampionMasteryDto> getChampionMasteriesBySummonerIdDescending(String encryptedSummonerId) {
+    public List<ChampionMasteryApiResult> getChampionMasteriesBySummonerIdDescending(String encryptedSummonerId) {
         return getChampionMasteriesBySummonerIdDescending(encryptedSummonerId, 3);
     }
 
@@ -266,11 +260,11 @@ public class ApiService {
      * call /lol/platform/v3/champion-rotations
      * @return Champion Info Dto
      */
-    public ChampionInfoDto getChampionRotation() {
+    public ChampionInfoApiResult getChampionRotation() {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/platform/v3/champion-rotations";
 
-        return apiCall(webClient, uri, ChampionInfoDto.class);
+        return apiCall(webClient, uri, ChampionInfoApiResult.class);
     }
 
 // LEAGUE-EXP
@@ -283,14 +277,14 @@ public class ApiService {
      * @param division division
      * @return List of League Entry Dto
      */
-    public List<LeagueEntryDto> getLeagueEntriesExp(QueueEnum queue, TierEnum tier, DivisionEnum division, int page) {
+    public List<LeagueEntryApiResult> getLeagueEntriesExp(QueueEnum queue, TierEnum tier, DivisionEnum division, int page) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/league-exp/v4/entries/" + queue + "/" + tier + "/" + division + "?page=" + page;
 
-        return apiCallAsDtoList(webClient, uri, LeagueEntryDto[].class);
+        return apiCallAsDtoList(webClient, uri, LeagueEntryApiResult[].class);
     }
 
-    public List<LeagueEntryDto> getLeagueEntriesExp(QueueEnum queue, TierEnum tier, DivisionEnum division) {
+    public List<LeagueEntryApiResult> getLeagueEntriesExp(QueueEnum queue, TierEnum tier, DivisionEnum division) {
         return getLeagueEntriesExp(queue, tier, division, 1);
     }
 
@@ -302,11 +296,11 @@ public class ApiService {
      * @param leagueId league's id value
      * @return League List Dto
      */
-    public LeagueListDto getLeaguesByLeagueId(String leagueId) {
+    public LeagueListApiResult getLeaguesByLeagueId(String leagueId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/league/v4/leagues/" + leagueId;
 
-        return apiCall(webClient, uri, LeagueListDto.class);
+        return apiCall(webClient, uri, LeagueListApiResult.class);
     }
 
     /**
@@ -314,11 +308,11 @@ public class ApiService {
      * @param encryptedSummonerId encrypted summoner id
      * @return List of League Entry Dto
      */
-    public List<LeagueEntryDto> getLeagueEntriesBySummonerId(String encryptedSummonerId) {
+    public List<LeagueEntryApiResult> getLeagueEntriesBySummonerId(String encryptedSummonerId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/league/v4/entries/by-summoner/" + encryptedSummonerId;
 
-        return apiCallAsDtoList(webClient, uri, LeagueEntryDto[].class);
+        return apiCallAsDtoList(webClient, uri, LeagueEntryApiResult[].class);
     }
 
     /**
@@ -330,14 +324,14 @@ public class ApiService {
      * @return Set of League Entry Dto
      * @queryParam page, default: 1
      */
-    public List<LeagueEntryDto> getLeagueEntries(QueueEnum queue, TierEnum tier, DivisionEnum division, int page) {
+    public List<LeagueEntryApiResult> getLeagueEntries(QueueEnum queue, TierEnum tier, DivisionEnum division, int page) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/league/v4/entries/" + queue + "/" + tier + "/" + division + "?page=" + page;
 
-        return apiCallAsDtoList(webClient, uri, LeagueEntryDto[].class);
+        return apiCallAsDtoList(webClient, uri, LeagueEntryApiResult[].class);
     }
 
-    public List<LeagueEntryDto> getLeagueEntries(QueueEnum queue, TierEnum tier, DivisionEnum division) {
+    public List<LeagueEntryApiResult> getLeagueEntries(QueueEnum queue, TierEnum tier, DivisionEnum division) {
         return getLeagueEntries(queue, tier, division, 1) ;
     }
 
@@ -346,11 +340,11 @@ public class ApiService {
      * @param queue queue
      * @return League List Dto
      */
-    public LeagueListDto getChallengerLeaguesByQueue(QueueEnum queue) {
+    public LeagueListApiResult getChallengerLeaguesByQueue(QueueEnum queue) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/league/v4/challengerleagues/by-queue/" + queue;
 
-        return apiCall(webClient, uri, LeagueListDto.class);
+        return apiCall(webClient, uri, LeagueListApiResult.class);
     }
 
     /**
@@ -358,11 +352,11 @@ public class ApiService {
      * @param queue queue
      * @return League List Dto
      */
-    public LeagueListDto getGrandMasterLeaguesByQueue(QueueEnum queue) {
+    public LeagueListApiResult getGrandMasterLeaguesByQueue(QueueEnum queue) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/league/v4/grandmasterleagues/by-queue/" + queue;
 
-        return apiCall(webClient, uri, LeagueListDto.class);
+        return apiCall(webClient, uri, LeagueListApiResult.class);
     }
 
     /**
@@ -370,13 +364,13 @@ public class ApiService {
      * @param queue queue
      * @return League List Dto
      */
-    public LeagueListDto getMasterLeaguesByQueue(QueueEnum queue) {
+    public LeagueListApiResult getMasterLeaguesByQueue(QueueEnum queue) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/league/v4/masterleagues/by-queue/" + queue;
 
         System.out.println("uri = " + uri);
 
-        return apiCall(webClient, uri, LeagueListDto.class);
+        return apiCall(webClient, uri, LeagueListApiResult.class);
     }
 
 // MATCH
@@ -418,11 +412,11 @@ public class ApiService {
      * @param matchId match's id
      * @return Match Dto
     */
-    public MatchDto getMatchByMatchId(String matchId) {
+    public MatchApiResult getMatchByMatchId(String matchId) {
         WebClient webClient = getWebClient("https://asia.api.riotgames.com");
         String uri = "/lol/match/v5/matches/" + matchId;
 
-        return apiCall(webClient, uri, MatchDto.class);
+        return apiCall(webClient, uri, MatchApiResult.class);
     }
 
     /**
@@ -430,7 +424,7 @@ public class ApiService {
      * @param matchId match's id
      * @return Match Timeline Dto
      */
-    public MatchTimelineDto getMatchTimelineByMatchId(String matchId) {
+    public MatchTimelineApiResult getMatchTimelineByMatchId(String matchId) {
         WebClient webClient = getWebClient("https://asia.api.riotgames.com");
         return null;
         //TODO: TimeLine 기능 구현
@@ -444,11 +438,11 @@ public class ApiService {
      * @param rsoPUUID rso encrypted puuid
      * @return Summoner Dto
      */
-    public SummonerDto getSummonerByRsoPuuid(String rsoPUUID) {
+    public SummonerApiResult getSummonerByRsoPuuid(String rsoPUUID) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/fulfillment/v1/summoners/by-puuid/" + rsoPUUID;
 
-        return apiCall(webClient, uri, SummonerDto.class);
+        return apiCall(webClient, uri, SummonerApiResult.class);
     }
 
     /**
@@ -456,11 +450,11 @@ public class ApiService {
      * @param encryptedAccountId encrypted account id
      * @return Summoner Dto
      */
-    public SummonerDto getSummonerByAccountId(String encryptedAccountId) {
+    public SummonerApiResult getSummonerByAccountId(String encryptedAccountId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/summoner/v4/summoners/by-account/" + encryptedAccountId;
 
-        return apiCall(webClient, uri, SummonerDto.class);
+        return apiCall(webClient, uri, SummonerApiResult.class);
     }
 
     /**
@@ -468,11 +462,11 @@ public class ApiService {
      * @param summonerName summoner name
      * @return Summoner Dto
      */
-    public SummonerDto getSummonerBySummonerName(String summonerName) {
+    public SummonerApiResult getSummonerBySummonerName(String summonerName) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/summoner/v4/summoners/by-name/" + summonerName;
 
-        return apiCall(webClient, uri, SummonerDto.class);
+        return apiCall(webClient, uri, SummonerApiResult.class);
     }
 
     /**
@@ -480,11 +474,11 @@ public class ApiService {
      * @param encryptedPUUID encrypted puuid
      * @return Summoner Dto
      */
-    public SummonerDto getSummonerByPuuid(String encryptedPUUID) {
+    public SummonerApiResult getSummonerByPuuid(String encryptedPUUID) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/summoner/v4/summoners/by-puuid/" + encryptedPUUID;
 
-        return apiCall(webClient, uri, SummonerDto.class);
+        return apiCall(webClient, uri, SummonerApiResult.class);
     }
 
     /**
@@ -492,11 +486,11 @@ public class ApiService {
      * @param Authorization authorization bearer token
      * @return Summoner Dto
      */
-    public SummonerDto getSummonerByAccessToken(String Authorization) {
+    public SummonerApiResult getSummonerByAccessToken(String Authorization) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com", Authorization);
         String uri = "/lol/summoner/v4/summoners/me";
 
-        return apiCall(webClient, uri, SummonerDto.class);
+        return apiCall(webClient, uri, SummonerApiResult.class);
     }
 
     /**
@@ -504,10 +498,10 @@ public class ApiService {
      * @param encryptedSummonerId encrypted summoner id
      * @return Summoner Dto
      */
-    public SummonerDto getSummonerBySummonerId(String encryptedSummonerId) {
+    public SummonerApiResult getSummonerBySummonerId(String encryptedSummonerId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/summoner/v4/summoners/" + encryptedSummonerId;
 
-        return apiCall(webClient, uri, SummonerDto.class);
+        return apiCall(webClient, uri, SummonerApiResult.class);
     }
 }

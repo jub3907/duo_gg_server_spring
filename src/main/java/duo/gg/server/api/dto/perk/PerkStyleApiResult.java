@@ -9,8 +9,8 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PerkStyleDto {
+public class PerkStyleApiResult {
     private String description;
-    private List<PerkStyleSelectionDto> selections;
+    private List<PerkStyleSelectionApiResult> selections;
     private int style;
 }

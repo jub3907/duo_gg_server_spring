@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PerksDto {
-    private PerkStatsDto statPerks;
-    private List<PerkStyleDto> styles;
+public class PerkStatsApiResult {
+    private int defense;
+    private int flex;
+    private int offense;
 }

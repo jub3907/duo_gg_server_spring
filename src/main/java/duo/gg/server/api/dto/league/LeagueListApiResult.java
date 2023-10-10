@@ -3,7 +3,6 @@ package duo.gg.server.api.dto.league;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.List;
 
@@ -11,11 +10,11 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LeagueListDto {
+public class LeagueListApiResult {
 
     private String leagueId;
 
-    private List<LeagueItemDto> entries;
+    private List<LeagueItemApiResult> entries;
 
     private String tier;
 

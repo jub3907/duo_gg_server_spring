@@ -9,9 +9,9 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeamDto {
-    private List<BanDto> bans;
-    private ObjectivesDto objectives;
+public class TeamApiResult {
+    private List<BanApiResult> bans;
+    private ObjectivesApiResult objectives;
     private int teamId;
     private boolean win;
 }

@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class InfoDto {
+public class InfoApiResult {
     // Unix timestamp for when the game is created on the game server (i.e., the loading screen).
     private Long gameCreation;
 
@@ -49,7 +49,7 @@ public class InfoDto {
     // 	Refer to the Game Constants documentation.
     private int mapId;
 
-    private List<ParticipantDto> participants;
+    private List<ParticipantApiResult> participants;
 
     // Platform where the match was played.
     private String platformId;
@@ -57,7 +57,7 @@ public class InfoDto {
     // Refer to the Game Constants documentation.
     private int queueId;
 
-    private List<TeamDto> teams;
+    private List<TeamApiResult> teams;
 
     // Tournament code used to generate the match. This field was added to match-v5 in patch 11.13 on June 23rd, 2021.
     private String tournamentCode;

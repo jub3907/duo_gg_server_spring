@@ -1,6 +1,6 @@
 package duo.gg.server.api.dto.match;
 
-import duo.gg.server.api.dto.perk.PerksDto;
+import duo.gg.server.api.dto.perk.PerksApiResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ParticipantDto {
+public class ParticipantApiResult {
     // 플레이어, 참여자 정보
     private String puuid;
     private String riotIdName;
@@ -28,7 +28,7 @@ public class ParticipantDto {
     private int champLevel;
     private int champExperience;
     private int championTransform;
-    private PerksDto perks;
+    private PerksApiResult perks;
 
     // 게임 종료 여부
     private boolean win;

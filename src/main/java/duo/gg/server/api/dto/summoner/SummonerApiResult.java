@@ -9,7 +9,16 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SummonerDto {
+@ToString
+public class SummonerApiResult {
+    // Encrypted summoner ID. Max length 63 characters.
+    private String id;
+
+    // Summoner name.
+    private String name;
+
+    // Encrypted PUUID. Exact length of 78 characters.
+    private String puuid;
 
     // Encrypted account ID. Max length 56 characters.
     private String accountId;
@@ -21,15 +30,6 @@ public class SummonerDto {
     // The following events will update this timestamp: profile icon change,
     // playing the tutorial or advanced tutorial, finishing a game, summoner name change
     private Long revisionDate;
-
-    // Summoner name.
-    private String name;
-
-    // Encrypted summoner ID. Max length 63 characters.
-    private String id;
-
-    // Encrypted PUUID. Exact length of 78 characters.
-    private String puuid;
 
     // Summoner level associated with the summoner.
     private Long summonerLevel;

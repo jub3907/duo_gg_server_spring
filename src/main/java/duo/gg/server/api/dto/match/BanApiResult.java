@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MatchDto {
-    private MetadataDto metadata;
-
-    private InfoDto info;
+public class BanApiResult {
+    private int championId;
+    private int pickTurn;
 }

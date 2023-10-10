@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ObjectiveDto {
+public class ObjectiveApiResult {
 
     private boolean first;
     private int kills;
