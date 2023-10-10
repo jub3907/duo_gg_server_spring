@@ -3,6 +3,12 @@ spring:
     ansi:
       enabled: always
 
+  database:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${MYSQL_URL}
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+
 riot:
   api-key: ${API_KEY}
   version: 13.19.1
