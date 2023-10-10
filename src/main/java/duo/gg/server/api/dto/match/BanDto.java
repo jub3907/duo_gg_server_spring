@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BanDto {
-    public int championId;
-    public int pickTurn;
+    private int championId;
+    private int pickTurn;
 }

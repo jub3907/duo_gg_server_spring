@@ -12,25 +12,25 @@ import lombok.ToString;
 public class SummonerDto {
 
     // Encrypted account ID. Max length 56 characters.
-    public String accountId;
+    private String accountId;
 
     // 	ID of the summoner icon associated with the summoner.
-    public int profileIconId;
+    private int profileIconId;
 
     // Date summoner was last modified specified as epoch milliseconds.
     // The following events will update this timestamp: profile icon change,
     // playing the tutorial or advanced tutorial, finishing a game, summoner name change
-    public Long revisionDate;
+    private Long revisionDate;
 
     // Summoner name.
-    public String name;
+    private String name;
 
     // Encrypted summoner ID. Max length 63 characters.
-    public String id;
+    private String id;
 
     // Encrypted PUUID. Exact length of 78 characters.
-    public String puuid;
+    private String puuid;
 
     // Summoner level associated with the summoner.
-    public Long summonerLevel;
+    private Long summonerLevel;
 }

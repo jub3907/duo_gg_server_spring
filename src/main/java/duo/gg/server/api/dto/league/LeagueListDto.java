@@ -13,13 +13,13 @@ import java.util.List;
 @NoArgsConstructor
 public class LeagueListDto {
 
-    public String leagueId;
+    private String leagueId;
 
-    public List<LeagueItemDto> entries;
+    private List<LeagueItemDto> entries;
 
-    public String tier;
+    private String tier;
 
-    public String name;
+    private String name;
 
-    public String queue;
+    private String queue;
 }

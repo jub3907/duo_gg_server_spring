@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ObjectiveDto {
 
-    public boolean first;
-    public int kills;
+    private boolean first;
+    private int kills;
 }

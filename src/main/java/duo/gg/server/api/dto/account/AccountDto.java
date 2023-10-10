@@ -9,11 +9,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccountDto {
-    public String puuid;
+    private String puuid;
 
     // This field may be excluded from the response if the account doesn't have a gameName.
-    public String gameName;
+    private String gameName;
 
     // This field may be excluded from the response if the account doesn't have a gameName.
-    public String tagLine;
+    private String tagLine;
 }

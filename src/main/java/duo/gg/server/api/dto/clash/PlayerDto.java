@@ -10,11 +10,11 @@ import lombok.ToString;
 @NoArgsConstructor
 public class PlayerDto {
 
-    public String summonerId;
+    private String summonerId;
 
-    public String teamId;
+    private String teamId;
 
-    public String position;
+    private String position;
 
-    public String role;
+    private String role;
 }

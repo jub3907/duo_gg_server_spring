@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PerkStatsDto {
-    public int defense;
-    public int flex;
-    public int offense;
+    private int defense;
+    private int flex;
+    private int offense;
 }

@@ -11,9 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 public class MetadataDto {
 
-    public String dataVersion;
-    public String matchId;
-    public List<String> participants;
-
+    private String dataVersion;
+    private String matchId;
+    private List<String> participants;
 }
 

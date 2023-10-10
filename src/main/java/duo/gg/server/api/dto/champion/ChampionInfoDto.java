@@ -11,9 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChampionInfoDto {
-    public int maxNewPlayerLevel;
+    private int maxNewPlayerLevel;
 
-    public List<Integer> freeChampionIdsForNewPlayers;
+    private List<Integer> freeChampionIdsForNewPlayers;
 
-    public List<Integer> freeChampionIds;
+    private List<Integer> freeChampionIds;
 }

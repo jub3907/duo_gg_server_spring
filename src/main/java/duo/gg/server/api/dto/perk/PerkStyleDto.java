@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PerkStyleDto {
-    public String description;
-    public List<PerkStyleSelectionDto> selections;
-    public int style;
+    private String description;
+    private List<PerkStyleSelectionDto> selections;
+    private int style;
 }

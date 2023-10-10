@@ -11,32 +11,32 @@ import lombok.ToString;
 @NoArgsConstructor
 public class LeagueEntryDto {
 
-    public String leagueId;
+    private String leagueId;
 
     // Player's summonerId (Encrypted)
-    public String summonerId;
+    private String summonerId;
 
-    public String summonerName;
+    private String summonerName;
 
-    public String queueType;
+    private String queueType;
 
-    public String tier;
+    private String tier;
 
-    public String rank;
+    private String rank;
 
-    public int leaguePoints;
+    private int leaguePoints;
 
     // Winning team on Summoners Rift. First placement in Teamfight Tactics.
-    public int wins;
+    private int wins;
 
     // Losing team on Summoners Rift. Second through eighth placement in Teamfight Tactics.
-    public int losses;
+    private int losses;
 
-    public boolean hotStreak;
-    public boolean veteran;
-    public boolean freshBlood;
-    public boolean inactive;
+    private boolean hotStreak;
+    private boolean veteran;
+    private boolean freshBlood;
+    private boolean inactive;
 
-    public MiniSeriesDto miniSeries;
+    private MiniSeriesDto miniSeries;
 
 }

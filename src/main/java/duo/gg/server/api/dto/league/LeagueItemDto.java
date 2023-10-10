@@ -11,27 +11,27 @@ import lombok.ToString;
 @NoArgsConstructor
 public class LeagueItemDto {
 
-    public boolean freshBlood;
+    private boolean freshBlood;
 
     // winning team on Summoners Rift
-    public int wins;
+    private int wins;
 
-    public String summonerName;
+    private String summonerName;
 
-    public MiniSeriesDto miniSeries;
+    private MiniSeriesDto miniSeries;
 
-    public boolean inactive;
+    private boolean inactive;
 
-    public boolean veteran;
+    private boolean veteran;
 
-    public boolean hotStreak;
+    private boolean hotStreak;
 
-    public String rank;
+    private String rank;
 
-    public int leaguePoints;
+    private int leaguePoints;
 
-    public int losses;
+    private int losses;
 
-    public String summonerId;
+    private String summonerId;
 
 }

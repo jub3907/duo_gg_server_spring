@@ -10,6 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PerksDto {
-    public PerkStatsDto statPerks;
-    public List<PerkStyleDto> styles;
+    private PerkStatsDto statPerks;
+    private List<PerkStyleDto> styles;
 }

@@ -10,8 +10,8 @@ import lombok.ToString;
 @NoArgsConstructor
 public class MiniSeriesDto {
 
-    public String progress;
-    public int target;
-    public int wins;
-    public int losses;
+    private String progress;
+    private int target;
+    private int wins;
+    private int losses;
 }

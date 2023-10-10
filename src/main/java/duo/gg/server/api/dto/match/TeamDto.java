@@ -10,8 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TeamDto {
-    public List<BanDto> bans;
-    public ObjectivesDto objectives;
-    public int teamId;
-    public boolean win;
+    private List<BanDto> bans;
+    private ObjectivesDto objectives;
+    private int teamId;
+    private boolean win;
 }

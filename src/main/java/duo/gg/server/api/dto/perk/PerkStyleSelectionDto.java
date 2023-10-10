@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PerkStyleSelectionDto {
-    public int perk;
-    public int var1;
-    public int var2;
-    public int var3;
+    private int perk;
+    private int var1;
+    private int var2;
+    private int var3;
 }
