@@ -5,7 +5,7 @@ import duo.gg.server.api.constant.QueueEnum;
 import duo.gg.server.api.constant.TierEnum;
 import duo.gg.server.api.dto.account.AccountApiResult;
 import duo.gg.server.api.dto.champion.ChampionInfoApiResult;
-import duo.gg.server.api.dto.championMastery.ChampionMasteryApiResult;
+import duo.gg.server.api.dto.mastery.MasteryApiResult;
 import duo.gg.server.api.dto.league.LeagueEntryApiResult;
 import duo.gg.server.api.dto.league.LeagueListApiResult;
 import duo.gg.server.api.dto.match.MatchApiResult;
@@ -61,44 +61,44 @@ class ApiServiceTest {
     }
 
     @Test
-    void getChampionMasteriesByPuuid() {
-        List<ChampionMasteryApiResult> dtos = apiService.getChampionMasteriesByPuuid(puuid);
+    void getMasteriesByPuuid() {
+        List<MasteryApiResult> dtos = apiService.getMasteriesByPuuid(puuid);
         assertThat(dtos.get(0).getChampionId()).isEqualTo(championId);
     }
 
     @Test
-    void getChampionMasteryByPuuidAndChampionId() {
-        ChampionMasteryApiResult dto = apiService.getChampionMasteryByPuuidAndChampionId(puuid, championId);
+    void getMasteryByPuuidAndChampionId() {
+        MasteryApiResult dto = apiService.getMasteryByPuuidAndChampionId(puuid, championId);
         assertThat(dto.getChampionId()).isEqualTo(championId);
 
     }
 
     @Test
-    void getChampionMasteriesByPuuidDescending() {
-        List<ChampionMasteryApiResult> dtos = apiService.getChampionMasteriesByPuuidDescending(puuid, 2);
+    void getMasteriesByPuuidDescending() {
+        List<MasteryApiResult> dtos = apiService.getMasteriesByPuuidDescending(puuid, 2);
         assertThat(dtos.size()).isEqualTo(2);
         assertThat(dtos.get(0).getChampionId()).isEqualTo(championId);
 
-        List<ChampionMasteryApiResult> dtos2 = apiService.getChampionMasteriesByPuuidDescending(puuid);
+        List<MasteryApiResult> dtos2 = apiService.getMasteriesByPuuidDescending(puuid);
         assertThat(dtos2.size()).isEqualTo(3);
     }
 
     @Test
-    void getChampionMasteriesBySummonerId() {
-        List<ChampionMasteryApiResult> dtos = apiService.getChampionMasteriesBySummonerId(summonerId);
+    void getMasteriesBySummonerId() {
+        List<MasteryApiResult> dtos = apiService.getMasteriesBySummonerId(summonerId);
         assertThat(dtos.get(0).getChampionId()).isEqualTo(championId);
     }
 
     @Test
-    void getChampionMasteryBySummonerIdAndChampionId() {
-        ChampionMasteryApiResult dto = apiService.getChampionMasteryBySummonerIdAndChampionId(summonerId, championId);
+    void getMasteryBySummonerIdAndChampionId() {
+        MasteryApiResult dto = apiService.getMasteryBySummonerIdAndChampionId(summonerId, championId);
         assertThat(dto.getChampionId()).isEqualTo(championId);
     }
 
     @Test
-    void getChampionMasteriesBySummonerIdDescending() {
-        List<ChampionMasteryApiResult> dtos = apiService.getChampionMasteriesBySummonerIdDescending(summonerId, 2);
-        List<ChampionMasteryApiResult> dtos2 = apiService.getChampionMasteriesBySummonerIdDescending(summonerId);
+    void getMasteriesBySummonerIdDescending() {
+        List<MasteryApiResult> dtos = apiService.getMasteriesBySummonerIdDescending(summonerId, 2);
+        List<MasteryApiResult> dtos2 = apiService.getMasteriesBySummonerIdDescending(summonerId);
 
         assertThat(dtos.size()).isEqualTo(2);
         assertThat(dtos2.size()).isEqualTo(3);
@@ -106,14 +106,14 @@ class ApiServiceTest {
     }
 
     @Test
-    void getChampionMasteryScoresByPuuid() {
-        Integer score = apiService.getChampionMasteryScoresByPuuid(puuid);
+    void getMasteryScoresByPuuid() {
+        Integer score = apiService.getMasteryScoresByPuuid(puuid);
         assertThat(score).isInstanceOf(Integer.class);
     }
 
     @Test
-    void getChampionMasteryScoresBySummonerId() {
-        Integer score = apiService.getChampionMasteryScoresBySummonerId(summonerId);
+    void getMasteryScoresBySummonerId() {
+        Integer score = apiService.getMasteryScoresBySummonerId(summonerId);
         assertThat(score).isInstanceOf(Integer.class);
     }
 

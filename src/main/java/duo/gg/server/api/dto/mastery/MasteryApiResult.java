@@ -1,4 +1,4 @@
-package duo.gg.server.api.dto.championMastery;
+package duo.gg.server.api.dto.mastery;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +9,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ChampionMasteryApiResult {
+public class MasteryApiResult {
     // Player Universal Unique Identifier. Exact length of 78 characters. (Encrypted)
     // 플레이어의 고유 ID값. 78글자로 이루어짐
     private String puuid;
+
+    // Champion ID for this entry.
+    private Long championId;
 
     // Number of points needed to achieve next level. Zero if player reached maximum champion level for this champion.
     // 다음 레벨을 달성하기 위한 포인트 값. 해당 챔피언 레벨이 최대일 때, 0.
@@ -21,9 +24,6 @@ public class ChampionMasteryApiResult {
     // Is chest granted for this champion or not in current season.
     // 이번 시즌에, 해당 챔피언에 대한 상자를 얻었는지 여부
     private boolean chestGranted;
-
-    // Champion ID for this entry.
-    private Long championId;
 
     // Last time this champion was played by this player - in Unix milliseconds time format.
     private Long lastPlayTime;

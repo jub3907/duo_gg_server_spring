@@ -5,7 +5,7 @@ import duo.gg.server.api.constant.QueueEnum;
 import duo.gg.server.api.constant.TierEnum;
 import duo.gg.server.api.dto.account.AccountApiResult;
 import duo.gg.server.api.dto.champion.ChampionInfoApiResult;
-import duo.gg.server.api.dto.championMastery.ChampionMasteryApiResult;
+import duo.gg.server.api.dto.mastery.MasteryApiResult;
 import duo.gg.server.api.dto.league.LeagueEntryApiResult;
 import duo.gg.server.api.dto.league.LeagueListApiResult;
 import duo.gg.server.api.dto.match.MatchApiResult;
@@ -148,55 +148,55 @@ public class ApiService {
     /**
      * call /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}
      * @param encryptedPUUID encryptedPUUID
-     * @return List<ChampionMasteryDto>
+     * @return List<MasteryDto>
      */
-    public List<ChampionMasteryApiResult> getChampionMasteriesByPuuid(String encryptedPUUID) {
+    public List<MasteryApiResult> getMasteriesByPuuid(String encryptedPUUID) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-puuid/" + encryptedPUUID;
 
-        return apiCallAsDtoList(webClient, uri, ChampionMasteryApiResult[].class);
+        return apiCallAsDtoList(webClient, uri, MasteryApiResult[].class);
     }
 
     /**
      * call /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}/by-champion/{championId}
      * @param encryptedPUUID encryptedPUUID
      * @param championId championId
-     * @return ChampionMasteryDto
+     * @return MasteryDto
      */
-    public ChampionMasteryApiResult getChampionMasteryByPuuidAndChampionId(String encryptedPUUID, Long championId) {
+    public MasteryApiResult getMasteryByPuuidAndChampionId(String encryptedPUUID, Long championId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-puuid/" + encryptedPUUID +"/by-champion/" + championId;
 
-        return apiCall(webClient, uri, ChampionMasteryApiResult.class);
+        return apiCall(webClient, uri, MasteryApiResult.class);
     }
 
     /**
      * /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}/top
      * @param encryptedPUUID encryptedPUUID
      * @param count default 3
-     * @return List<ChampionMasteryDto>
+     * @return List<MasteryDto>
      */
-    public List<ChampionMasteryApiResult> getChampionMasteriesByPuuidDescending(String encryptedPUUID, int count) {
+    public List<MasteryApiResult> getMasteriesByPuuidDescending(String encryptedPUUID, int count) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-puuid/" + encryptedPUUID + "/top/?count=" + count;
 
-        return apiCallAsDtoList(webClient, uri, ChampionMasteryApiResult[].class);
+        return apiCallAsDtoList(webClient, uri, MasteryApiResult[].class);
     }
 
-    public List<ChampionMasteryApiResult> getChampionMasteriesByPuuidDescending(String encryptedPUUID) {
-        return getChampionMasteriesByPuuidDescending(encryptedPUUID, 3);
+    public List<MasteryApiResult> getMasteriesByPuuidDescending(String encryptedPUUID) {
+        return getMasteriesByPuuidDescending(encryptedPUUID, 3);
     }
 
     /**
      * call /lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}
      * @param encryptedSummonerId encryptedSummonerId
-     * @return List<ChampionMasteryDto>
+     * @return List<MasteryDto>
      */
-    public List<ChampionMasteryApiResult> getChampionMasteriesBySummonerId(String encryptedSummonerId) {
+    public List<MasteryApiResult> getMasteriesBySummonerId(String encryptedSummonerId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + encryptedSummonerId;
 
-        return apiCallAsDtoList(webClient, uri, ChampionMasteryApiResult[].class);
+        return apiCallAsDtoList(webClient, uri, MasteryApiResult[].class);
     }
 
     /**
@@ -205,11 +205,11 @@ public class ApiService {
      * @param championId champion's id
      * @return Champion Mastery Dto
      */
-    public ChampionMasteryApiResult getChampionMasteryBySummonerIdAndChampionId(String encryptedSummonerId, Long championId) {
+    public MasteryApiResult getMasteryBySummonerIdAndChampionId(String encryptedSummonerId, Long championId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + encryptedSummonerId + "/by-champion/" + championId;
 
-        return apiCall(webClient, uri, ChampionMasteryApiResult.class);
+        return apiCall(webClient, uri, MasteryApiResult.class);
     }
 
     /**
@@ -218,15 +218,15 @@ public class ApiService {
      * @param count default 3
      * @return List of Champion Mastery Dto
      */
-    public List<ChampionMasteryApiResult> getChampionMasteriesBySummonerIdDescending(String encryptedSummonerId, int count) {
+    public List<MasteryApiResult> getMasteriesBySummonerIdDescending(String encryptedSummonerId, int count) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + encryptedSummonerId + "/top?count=" + count;
 
-        return apiCallAsDtoList(webClient, uri, ChampionMasteryApiResult[].class);
+        return apiCallAsDtoList(webClient, uri, MasteryApiResult[].class);
     }
 
-    public List<ChampionMasteryApiResult> getChampionMasteriesBySummonerIdDescending(String encryptedSummonerId) {
-        return getChampionMasteriesBySummonerIdDescending(encryptedSummonerId, 3);
+    public List<MasteryApiResult> getMasteriesBySummonerIdDescending(String encryptedSummonerId) {
+        return getMasteriesBySummonerIdDescending(encryptedSummonerId, 3);
     }
 
     /**
@@ -234,7 +234,7 @@ public class ApiService {
      * @param encryptedPUUID encrypted puuid
      * @return Integer
      */
-    public Integer getChampionMasteryScoresByPuuid(String encryptedPUUID) {
+    public Integer getMasteryScoresByPuuid(String encryptedPUUID) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/scores/by-puuid/" + encryptedPUUID;
 
@@ -246,7 +246,7 @@ public class ApiService {
      * @param encryptedSummonerId encrypted summoner id
      * @return Integer
      */
-    public Integer getChampionMasteryScoresBySummonerId(String encryptedSummonerId) {
+    public Integer getMasteryScoresBySummonerId(String encryptedSummonerId) {
         WebClient webClient = getWebClient("https://kr.api.riotgames.com");
         String uri = "/lol/champion-mastery/v4/scores/by-summoner/" + encryptedSummonerId;
 
