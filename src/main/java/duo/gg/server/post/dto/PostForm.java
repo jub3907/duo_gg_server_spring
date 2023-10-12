@@ -1,7 +1,7 @@
-package duo.gg.server.comment.dto;
+package duo.gg.server.post.dto;
 
-import duo.gg.server.comment.constant.CommentPosition;
-import duo.gg.server.comment.constant.CommentRankType;
+import duo.gg.server.post.contant.PostPosition;
+import duo.gg.server.post.contant.PostRankType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentForm {
+public class PostForm {
 
-    private CommentRankType rankType;
+    private PostRankType rankType;
 
-    private CommentPosition position;
+    private PostPosition position;
 
     @NotBlank(message = "이름을 입력 해주세요.")
     private String name;

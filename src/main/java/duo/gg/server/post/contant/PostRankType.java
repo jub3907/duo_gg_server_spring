@@ -1,4 +1,4 @@
-package duo.gg.server.comment.constant;
+package duo.gg.server.post.contant;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum CommentRankType {
+public enum PostRankType {
     SOLO("솔로랭크"),
     TEAM("자유랭크"),
     NORMAL("일반게임"),
@@ -15,8 +15,8 @@ public enum CommentRankType {
     private final String rankType;
 
     @JsonCreator
-    public static CommentRankType from(String rankType) {
-        for (CommentRankType value : CommentRankType.values()) {
+    public static PostRankType from(String rankType) {
+        for (PostRankType value : PostRankType.values()) {
             if (value.getRankType().equals(rankType)) {
                 return value;
             }

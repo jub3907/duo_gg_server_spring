@@ -1,17 +1,17 @@
-package duo.gg.server.comment.dto;
+package duo.gg.server.post.dto;
 
-import duo.gg.server.comment.entity.Comment;
+import duo.gg.server.post.entity.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 
 @Getter
 @NoArgsConstructor
 @ToString
-public class CommentDto {
+public class PostDto {
 
     private String rankType;
     private String position;
@@ -20,7 +20,7 @@ public class CommentDto {
     private String body;
     private LocalDateTime createdDate;
 
-    public CommentDto(Comment entity) {
+    public PostDto(Post entity) {
         this.rankType = entity.getRankType().getRankType();
         this.position = entity.getPosition().getPosition();
 

@@ -1,14 +1,12 @@
-package duo.gg.server.comment.constant;
+package duo.gg.server.post.contant;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.EnumMap;
-
 @Getter
 @AllArgsConstructor
-public enum CommentPosition {
+public enum PostPosition {
     ALL("모든 포지션"),
     TOP("탑"),
     MID("미드"),
@@ -19,8 +17,8 @@ public enum CommentPosition {
     private final String position;
 
     @JsonCreator
-    public static CommentPosition from(String position) {
-        for (CommentPosition value : CommentPosition.values()) {
+    public static PostPosition from(String position) {
+        for (PostPosition value : PostPosition.values()) {
             if (value.getPosition().equals(position)) {
                 return value;
             }
