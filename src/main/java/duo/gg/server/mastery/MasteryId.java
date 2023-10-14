@@ -3,15 +3,17 @@ package duo.gg.server.mastery;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Embeddable
+@NoArgsConstructor
+@AllArgsConstructor
 public class MasteryId {
-    @Column(name = "mastery_puuid")
     private String puuid;
 
-    @Column(name = "mastery_champion_id")
     private Long championId;
 }
