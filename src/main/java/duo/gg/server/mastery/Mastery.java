@@ -1,15 +1,18 @@
 package duo.gg.server.mastery;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Entity
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Mastery {
 
     @EmbeddedId
@@ -23,4 +26,10 @@ public class Mastery {
     private int championPoints;
     private Long championPointsSinceLastLevel;
     private int tokenEarned;
+
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDate;
 }
