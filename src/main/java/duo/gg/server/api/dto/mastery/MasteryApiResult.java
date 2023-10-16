@@ -45,11 +45,4 @@ public class MasteryApiResult {
     // When the championLevel is advanced the tokensEarned resets to 0.
     private int tokensEarned;
 
-    public boolean getChestGranted() {
-        return chestGranted;
-    }
-
-    public int getTokenEarned() {
-        return tokensEarned;
-    }
 }

@@ -40,24 +40,24 @@ public class Mastery {
         id = new MasteryId(apiResult.getPuuid(), apiResult.getChampionId());
 
         championPointsUntilNextLevel = apiResult.getChampionPointsUntilNextLevel();
-        chestGranted = apiResult.getChestGranted();
+        chestGranted = apiResult.isChestGranted();
         lastPlayTime = apiResult.getLastPlayTime();
         championLevel = apiResult.getChampionLevel();
         summonerId = apiResult.getSummonerId();
         championPoints = apiResult.getChampionPoints();
         championPointsSinceLastLevel = apiResult.getChampionPointsSinceLastLevel();
-        tokenEarned = apiResult.getTokenEarned();
+        tokenEarned = apiResult.getTokensEarned();
     }
 
     public void updateByApiResult(MasteryApiResult apiResult) {
 
         championPointsUntilNextLevel = apiResult.getChampionPointsUntilNextLevel();
-        chestGranted = apiResult.getChestGranted();
+        chestGranted = apiResult.isChestGranted();
         lastPlayTime = apiResult.getLastPlayTime();
         championLevel = apiResult.getChampionLevel();
         summonerId = apiResult.getSummonerId();
         championPoints = apiResult.getChampionPoints();
         championPointsSinceLastLevel = apiResult.getChampionPointsSinceLastLevel();
-        tokenEarned = apiResult.getTokenEarned();
+        tokenEarned = apiResult.getTokensEarned();
     }
 }
