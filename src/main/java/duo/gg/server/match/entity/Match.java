@@ -26,7 +26,7 @@ public class Match {
     @OneToMany(mappedBy = "match", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Team> teams = new ArrayList<>();
 
-    Match(MatchApiResult result) {
+    public Match(MatchApiResult result) {
         id = result.getMetadata().getMatchId();
         dataVersion = result.getMetadata().getDataVersion();
 

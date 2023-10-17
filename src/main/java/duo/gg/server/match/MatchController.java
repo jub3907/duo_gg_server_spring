@@ -5,12 +5,38 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 
 @Slf4j
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class MatchController {
-    //TODO: Post - puuid, start, count를 사용해 match ids api call
-    //TODO: After, Match ID중 DB에 존재하지 않는 match들만 api call, DB Update
+    @PostMapping("/match/{name}")
+    public void updateRecentMatches(@PathVariable String name,
+                                    @RequestParam(required = false) Integer start,
+                                    @RequestParam(required = false) Integer count) {
 
-    //TODO: Get - name? puuid?, paging을 사용해 최근 전적 불러옴
-    //리턴 내용은 추후 좀 더 고민.
+        // 0. get puuid of summoner by name
+
+        // 1. get match ids by puuid
+
+        // 2. select matchs db with ids
+
+        // 3. update matches where id is not in DB
+    }
+
+    @GetMapping("/match/{name}")
+    public List<MatchBasicDto> getRecentMatches(@PathVariable String name,
+                                                @RequestParam(required = false) Integer start,
+                                                @RequestParam(required = false) Integer count) {
+        // 1. get recent matches
+
+        // 2. reshape Match entity List to MatchBasicDto List, return.
+        return null;
+    }
+
+    @GetMapping("/match/detail/{matchId}")
+    public MatchDetailDto getMatchDetail(@PathVariable String matchId) {
+        // 1. get match by matchId
+        // reshape Match entity to MatchDetailDto, return.
+        return null;
+    }
+
 }

@@ -33,7 +33,7 @@ public class PostController {
     //TODO: Get - 코멘트 조회, count
     //작성자이름, 작성일, 내용
     @GetMapping("/duo")
-    public List<PostDto> findByPage(@RequestParam int offset, @RequestParam int limit) {
+    public List<PostDto> findByPage(@RequestParam Integer offset, @RequestParam Integer limit) {
         return service.findByPage(offset, limit);
     }
 
