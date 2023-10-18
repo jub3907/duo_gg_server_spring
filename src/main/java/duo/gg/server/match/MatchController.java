@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -43,16 +44,16 @@ public class MatchController {
         List<String> recentMatchIds = matchService.getMatchIdsByPuuid(puuid, start, count);
         List<Match> matches = matchRepository.findByIds(recentMatchIds);
 
-        // TODO: reshape Match entity List to MatchBasicDto List, return.
-        return null;
+        return matchService.getMatchBasics(matches, puuid);
     }
 
-    @GetMapping("/match/detail/{matchId}")
-    public MatchDetailDto getMatchDetail(@PathVariable String matchId) {
+    @GetMapping("/match/detail")
+    public MatchDetailDto getMatchDetail(@RequestParam String matchId,
+                                         @RequestParam String name) {
+        String puuid = summonerService.getPuuidByName(name);
         Match match = matchRepository.findById(matchId).get();
 
-        // TODO: reshape Match entity to MatchDetailDto, return.
-        return null;
+        return matchService.getMatchDetail(match, puuid);
     }
 
 }

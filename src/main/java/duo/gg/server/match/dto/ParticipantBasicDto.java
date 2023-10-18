@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MatchParticipantBasicDto {
+public class ParticipantBasicDto {
     private String riotIdName;
     private int championId;
 

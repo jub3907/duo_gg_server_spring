@@ -1,57 +1,48 @@
 package duo.gg.server.match.dto;
 
+import duo.gg.server.constant.TeamId;
+import duo.gg.server.match.entity.Match;
+import duo.gg.server.match.entity.Participant;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MatchDetailDto {
     // 전체 플레이 시간
+    private Long gameDuration;
+    private int winner;
 
-    // 블루팀, 레드팀 정보
-        // 승리 여부
-        // 블루/레드 팀 정보
-        // 타워 부순 수
-        // 바론 먹은 수
-        // 용 먹은 수
-        // 전체 킬
-        // 전체 골드
-        // 전체 딜량
-        // 전체 와드 처치 수
-        // 전체 받은 피해량
-        // 전체 CS
+    private List<ParticipantDetailDto> blue;
+    private List<ParticipantDetailDto> red;
 
-        // 참여자별 정보 리스트
-        // 라인
-        // 이름
-        // 티어
-        // 팀
+    private PerkDto perk;
 
-        // 챔피언 레벨
-        // 챔피언 이름
-        // 챔피언 아이디
-        // 스펠 1~4
-        // 아이템 0~6
+    public MatchDetailDto(Match match, String puuid) {
+        gameDuration = match.getGameDuration();
+        if (match.getParticipants().get(0).isWin()) {
+        } else {
+            winner = match.getParticipants().get(0).getTeamId();
+        }
 
-        // 킬
-        // 데스
-        // 어시스트
-        // CS
-        // 골드획득량
-        // 피해량
-        // 와드설치
-        // 받은피해량
+        for (Participant participant : match.getParticipants()) {
+            if (participant.getTeamId() == TeamId.BLUE) {
+                blue.add(new ParticipantDetailDto(participant));
+            } else {
+                red.add(new ParticipantDetailDto(participant));
+            }
 
+            if (participant.getPuuid().equals(puuid)) {
+                perk = new PerkDto(participant.getPerks());
+            }
 
-    // 내 룬 정보
-        // offense
-        // flex
-        // defense
-
-        // primary style
-        // primary 1
-        // primary 2
-        // primary 3
-
-        // sub style
-        // sub 1
-        // sub 2
-
-
-
+            if (participant.isWin()) {
+                winner = participant.getTeamId();
+            }
+        }
+    }
 }

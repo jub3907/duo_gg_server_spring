@@ -1,6 +1,6 @@
 package duo.gg.server.match.entity;
 
-import duo.gg.server.api.constant.GameModeEnum;
+import duo.gg.server.constant.GameModeEnum;
 import duo.gg.server.api.dto.match.MatchApiResult;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
