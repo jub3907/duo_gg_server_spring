@@ -1,7 +1,7 @@
 package duo.gg.server.api.dto.match;
 
 
-import duo.gg.server.api.constant.GameModeEnum;
+import duo.gg.server.constant.GameModeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

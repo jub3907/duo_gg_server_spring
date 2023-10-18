@@ -1,8 +1,8 @@
 package duo.gg.server.api.service;
 
-import duo.gg.server.api.constant.DivisionEnum;
-import duo.gg.server.api.constant.QueueEnum;
-import duo.gg.server.api.constant.TierEnum;
+import duo.gg.server.constant.DivisionEnum;
+import duo.gg.server.constant.QueueEnum;
+import duo.gg.server.constant.TierEnum;
 import duo.gg.server.api.dto.account.AccountApiResult;
 import duo.gg.server.api.dto.champion.ChampionInfoApiResult;
 import duo.gg.server.api.dto.mastery.MasteryApiResult;

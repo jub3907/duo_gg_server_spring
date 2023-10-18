@@ -1,4 +1,4 @@
-package duo.gg.server.api.constant;
+package duo.gg.server.constant;
 
 public enum GameModeEnum {
     CLASSIC,        // Classic Summoner's Rift and Twisted Treeline games

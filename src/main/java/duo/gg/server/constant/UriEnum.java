@@ -1,4 +1,4 @@
-package duo.gg.server.api.constant;
+package duo.gg.server.constant;
 
 public enum UriEnum {
     // ACCOUNT
