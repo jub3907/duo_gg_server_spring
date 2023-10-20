@@ -41,4 +41,15 @@ public class SummonerService {
             return findSummoner.get().getPuuid();
         }
     }
+
+    public String getSummonerIdByName(String name) {
+        Optional<Summoner> findSummoner = summonerRepository.findByName(name);
+
+        if (findSummoner.isEmpty()) {
+            return apiService.getSummonerBySummonerName(name).getId();
+        } else {
+            return findSummoner.get().getId();
+        }
+
+    }
 }
