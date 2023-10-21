@@ -8,6 +8,7 @@ import duo.gg.server.summoner.SummonerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class MatchController {
     private final MatchService matchService;
     private final MatchRepository matchRepository;
 
+    @Transactional
     @PostMapping("/match/{name}")
     public void updateRecentMatches(@PathVariable String name,
                                     @RequestParam(required = false) Integer start,

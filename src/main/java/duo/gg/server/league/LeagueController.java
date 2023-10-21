@@ -4,6 +4,7 @@ import duo.gg.server.summoner.SummonerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -18,6 +19,7 @@ public class LeagueController {
 
     //TODO: Schedule: 챌린저 리그 API CALL, DB 업데이트
 
+    @Transactional
     @PostMapping("/league/{name}")
     public void upsertByName(@PathVariable String name) {
         String summonerId = summonerService.getSummonerIdByName(name);

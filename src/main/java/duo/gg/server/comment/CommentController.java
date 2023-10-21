@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class CommentController {
     private final CommentService commentService;
     private final SummonerService summonerService;
 
+    @Transactional
     @PostMapping("/comment/{name}")
     public void createComment(@PathVariable String name,
                               @Valid @RequestBody CommentForm form) {
@@ -27,6 +29,7 @@ public class CommentController {
         commentService.create(puuid, form);
     }
 
+    @Transactional
     @DeleteMapping("/comment/{commentId}")
     public void deleteComment(@PathVariable String commentId,
                               @Valid @RequestBody CommentDeleteForm form) {
