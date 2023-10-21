@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class League {
 
     @Id @GeneratedValue
-    @Column(name = "league_id")
+    @Column(name = "league_generated_id")
     private Long id;
 
     private String leagueId;
@@ -44,10 +44,10 @@ public class League {
         this.tier = tier;
         this.queueType = QueueEnum.valueOf(queueType);
 
-        this.freshBlood = entry.isFreshBlood();
-        this.inactive = entry.isInactive();
-        this.veteran = entry.isVeteran();
-        this.hotStreak = entry.isHotStreak();
+        this.freshBlood = entry.getFreshBlood();
+        this.inactive = entry.getInactive();
+        this.veteran = entry.getVeteran();
+        this.hotStreak = entry.getHotStreak();
 
         this.wins = entry.getWins();
         this.leaguePoints = entry.getLeaguePoints();
@@ -62,10 +62,10 @@ public class League {
         tier = result.getTier();
         queueType = QueueEnum.valueOf(result.getQueueType());
 
-        freshBlood = result.isFreshBlood();
-        inactive = result.isInactive();
-        veteran = result.isVeteran();
-        hotStreak = result.isHotStreak();
+        freshBlood = result.getFreshBlood();
+        inactive = result.getInactive();
+        veteran = result.getVeteran();
+        hotStreak = result.getHotStreak();
 
         wins = result.getWins();
         leaguePoints = result.getLeaguePoints();
@@ -78,10 +78,10 @@ public class League {
 
     public void updateByItem(LeagueItemApiResult result) {
 
-        this.freshBlood = result.isFreshBlood();
-        this.inactive = result.isInactive();
-        this.veteran = result.isVeteran();
-        this.hotStreak = result.isHotStreak();
+        this.freshBlood = result.getFreshBlood();
+        this.inactive = result.getInactive();
+        this.veteran = result.getVeteran();
+        this.hotStreak = result.getHotStreak();
 
         this.wins = result.getWins();
         this.leaguePoints = result.getLeaguePoints();
@@ -95,10 +95,10 @@ public class League {
 
         leagueId = result.getLeagueId();
         tier = result.getTier();
-        this.freshBlood = result.isFreshBlood();
-        this.inactive = result.isInactive();
-        this.veteran = result.isVeteran();
-        this.hotStreak = result.isHotStreak();
+        this.freshBlood = result.getFreshBlood();
+        this.inactive = result.getInactive();
+        this.veteran = result.getVeteran();
+        this.hotStreak = result.getHotStreak();
         wins = result.getWins();
         leaguePoints = result.getLeaguePoints();
         losses = result.getLosses();

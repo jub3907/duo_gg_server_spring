@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BanApiResult {
-    private int championId;
-    private int pickTurn;
+    private Integer championId;
+    private Integer pickTurn;
 }

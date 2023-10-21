@@ -22,7 +22,7 @@ public class Summoner {
 
     private String accountId;
 
-    private int profileIconId;
+    private Integer profileIconId;
 
     private Long revisionDate;
 

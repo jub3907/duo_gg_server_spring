@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PerkStyleSelectionApiResult {
-    private int perk;
-    private int var1;
-    private int var2;
-    private int var3;
+    private Integer perk;
+    private Integer var1;
+    private Integer var2;
+    private Integer var3;
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChampionInfoApiResult {
-    private int maxNewPlayerLevel;
+    private Integer maxNewPlayerLevel;
 
     private List<Integer> freeChampionIdsForNewPlayers;
 

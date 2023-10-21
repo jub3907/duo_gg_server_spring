@@ -47,7 +47,7 @@ public class InfoApiResult {
     private String gameVersion;
 
     // 	Refer to the Game Constants documentation.
-    private int mapId;
+    private Integer mapId;
 
     private List<ParticipantApiResult> participants;
 
@@ -55,7 +55,7 @@ public class InfoApiResult {
     private String platformId;
 
     // Refer to the Game Constants documentation.
-    private int queueId;
+    private Integer queueId;
 
     private List<TeamApiResult> teams;
 

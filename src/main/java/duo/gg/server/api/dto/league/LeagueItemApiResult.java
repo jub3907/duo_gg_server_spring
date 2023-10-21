@@ -10,26 +10,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LeagueItemApiResult {
 
-    private boolean freshBlood;
+    private Boolean freshBlood;
 
     // winning team on Summoners Rift
-    private int wins;
+    private Integer wins;
 
     private String summonerName;
 
     private MiniSeriesApiResult miniSeries;
 
-    private boolean inactive;
+    private Boolean inactive;
 
-    private boolean veteran;
+    private Boolean veteran;
 
-    private boolean hotStreak;
+    private Boolean hotStreak;
 
     private String rank;
 
-    private int leaguePoints;
+    private Integer leaguePoints;
 
-    private int losses;
+    private Integer losses;
 
     private String summonerId;
 

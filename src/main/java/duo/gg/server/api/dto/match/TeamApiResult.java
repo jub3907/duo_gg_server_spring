@@ -12,6 +12,6 @@ import java.util.List;
 public class TeamApiResult {
     private List<BanApiResult> bans;
     private ObjectivesApiResult objectives;
-    private int teamId;
-    private boolean win;
+    private Integer teamId;
+    private Boolean win;
 }

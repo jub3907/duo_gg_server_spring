@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ParticipantBasicDto {
     private String riotIdName;
-    private int championId;
+    private Integer championId;
 
 }

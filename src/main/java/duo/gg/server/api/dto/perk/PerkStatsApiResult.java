@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PerkStatsApiResult {
-    private int defense;
-    private int flex;
-    private int offense;
+    private Integer defense;
+    private Integer flex;
+    private Integer offense;
 }

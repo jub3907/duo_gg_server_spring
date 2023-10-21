@@ -11,26 +11,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Team {
+    @Id @GeneratedValue
+    @Column(name = "team_generated_id")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "match_id")
     private Match match;
 
-    private int teamId;
-    private boolean win;
+    private Integer teamId;
+    private Boolean win;
 
-    private int baronKills;
-    private int championKills;
-    private int dragonKills;
-    private int inhibitorKills;
-    private int riftHeraldKills;
-    private int towerKills;
+    private Integer baronKills;
+    private Integer championKills;
+    private Integer dragonKills;
+    private Integer inhibitorKills;
+    private Integer riftHeraldKills;
+    private Integer towerKills;
 
     Team(TeamApiResult result, Match match) {
         this.match = match;
 
         teamId = result.getTeamId();
-        win = result.isWin();
+        win = result.getWin();
         baronKills = result.getObjectives().getBaron().getKills();
         championKills = result.getObjectives().getChampion().getKills();
         dragonKills = result.getObjectives().getDragon().getKills();

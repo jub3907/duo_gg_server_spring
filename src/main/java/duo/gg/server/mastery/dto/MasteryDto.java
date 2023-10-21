@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MasteryDto {
     private Long championId;
-    private int championLevel;
-    private int championPoints;
+    private Integer championLevel;
+    private Integer championPoints;
     private Long lastPlayTime;
 
     public MasteryDto(Mastery mastery) {

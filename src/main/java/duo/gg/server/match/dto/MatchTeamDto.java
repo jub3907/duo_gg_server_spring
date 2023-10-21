@@ -12,27 +12,27 @@ import java.util.List;
 @AllArgsConstructor
 public class MatchTeamDto {
     // 블루/레드
-    private int teamId;
+    private Integer teamId;
     // 승리 여부
-    private boolean isWin;
+    private Boolean isWin;
     // 타워 부순 수
-    private int towerKills;
+    private Integer towerKills;
     // 바론 먹은 수
-    private int baronKills;
+    private Integer baronKills;
     // 용 먹은 수
-    private int dragonKills;
+    private Integer dragonKills;
     // 전체 킬
-    private int totalKills;
+    private Integer totalKills;
     // 전체 골드
-    private int totalGold;
+    private Integer totalGold;
     // 전체 딜량
-    private int totalDamageDealtToChampions;
+    private Integer totalDamageDealtToChampions;
     // 전체 와드 처치 수
-    private int totalWardKills;
+    private Integer totalWardKills;
     // 전체 받은 피해량
-    private int totalDamageTaken;
+    private Integer totalDamageTaken;
     // 전체 CS
-    private int totalMinionsKilled;
+    private Integer totalMinionsKilled;
     // 참여자별 정보 리스트
     private List<ParticipantDetailDto> participants = new ArrayList<>();
 }

@@ -9,18 +9,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PerkDto {
-    private int offense;
-    private int flex;
-    private int defense;
+    private Integer offense;
+    private Integer flex;
+    private Integer defense;
 
-    private int primaryStyle;
-    private int primary_1;
-    private int primary_2;
-    private int primary_3;
+    private Integer primaryStyle;
+    private Integer primary_1;
+    private Integer primary_2;
+    private Integer primary_3;
 
-    private int subStyle;
-    private int sub_1;
-    private int sub_2;
+    private Integer subStyle;
+    private Integer sub_1;
+    private Integer sub_2;
 
     public PerkDto(Perk perk) {
         offense = perk.getOffense();

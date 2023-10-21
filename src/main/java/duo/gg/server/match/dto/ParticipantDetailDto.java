@@ -17,46 +17,46 @@ public class ParticipantDetailDto {
     //TODO: 티어 추가
 
     // 팀
-    private int teamId;
+    private Integer teamId;
 
     // 챔피언 레벨
-    private int champLevel;
+    private Integer champLevel;
     // 챔피언 이름
     private String championName;
     // 챔피언 아이디
-    private int championId;
+    private Integer championId;
     // 스펠 1~4
-    private int summoner1Id;
-    private int summoner2Id;
+    private Integer summoner1Id;
+    private Integer summoner2Id;
     // 아이템 0~6
-    private int item0;
-    private int item1;
-    private int item2;
-    private int item3;
-    private int item4;
-    private int item5;
-    private int item6;
+    private Integer item0;
+    private Integer item1;
+    private Integer item2;
+    private Integer item3;
+    private Integer item4;
+    private Integer item5;
+    private Integer item6;
 
     // 킬
     // 데스
     // 어시스트
-    private int kills;
-    private int deaths;
-    private int assists;
+    private Integer kills;
+    private Integer deaths;
+    private Integer assists;
     // CS
-    private int totalMinionsKilled;
+    private Integer totalMinionsKilled;
     // 골드획득량
-    private int goldEarned;
+    private Integer goldEarned;
     // 피해량
-    private int totalDamageDealtToChampions;
+    private Integer totalDamageDealtToChampions;
     // 받은피해량
-    private int totalDamageTaken;
+    private Integer totalDamageTaken;
 
     // 시야 점수
-    private int visionScore;
+    private Integer visionScore;
     // 와드 설치
-    private int wardsPlaced;
-    private int detectorWardsPlaced;
+    private Integer wardsPlaced;
+    private Integer detectorWardsPlaced;
 
     public ParticipantDetailDto(Participant participant) {
         teamPosition = participant.getTeamPosition();

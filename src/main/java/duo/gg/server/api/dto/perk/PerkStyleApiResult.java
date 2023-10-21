@@ -12,5 +12,5 @@ import java.util.List;
 public class PerkStyleApiResult {
     private String description;
     private List<PerkStyleSelectionApiResult> selections;
-    private int style;
+    private Integer style;
 }

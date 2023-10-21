@@ -22,18 +22,18 @@ public class LeagueEntryApiResult {
 
     private String rank;
 
-    private int leaguePoints;
+    private Integer leaguePoints;
 
     // Winning team on Summoners Rift. First placement in Teamfight Tactics.
-    private int wins;
+    private Integer wins;
 
     // Losing team on Summoners Rift. Second through eighth placement in Teamfight Tactics.
-    private int losses;
+    private Integer losses;
 
-    private boolean hotStreak;
-    private boolean veteran;
-    private boolean freshBlood;
-    private boolean inactive;
+    private Boolean hotStreak;
+    private Boolean veteran;
+    private Boolean freshBlood;
+    private Boolean inactive;
 
     private MiniSeriesApiResult miniSeries;
 

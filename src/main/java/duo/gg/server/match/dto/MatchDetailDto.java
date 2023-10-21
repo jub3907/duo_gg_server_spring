@@ -15,7 +15,7 @@ import java.util.List;
 public class MatchDetailDto {
     // 전체 플레이 시간
     private Long gameDuration;
-    private int winner;
+    private Integer winner;
 
     private List<ParticipantDetailDto> blue;
     private List<ParticipantDetailDto> red;
@@ -24,7 +24,7 @@ public class MatchDetailDto {
 
     public MatchDetailDto(Match match, String puuid) {
         gameDuration = match.getGameDuration();
-        if (match.getParticipants().get(0).isWin()) {
+        if (match.getParticipants().get(0).getWin()) {
         } else {
             winner = match.getParticipants().get(0).getTeamId();
         }
@@ -40,7 +40,7 @@ public class MatchDetailDto {
                 perk = new PerkDto(participant.getPerks());
             }
 
-            if (participant.isWin()) {
+            if (participant.getWin()) {
                 winner = participant.getTeamId();
             }
         }

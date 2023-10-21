@@ -24,7 +24,7 @@ public class SummonerApiResult {
     private String accountId;
 
     // 	ID of the summoner icon associated with the summoner.
-    private int profileIconId;
+    private Integer profileIconId;
 
     // Date summoner was last modified specified as epoch milliseconds.
     // The following events will update this timestamp: profile icon change,

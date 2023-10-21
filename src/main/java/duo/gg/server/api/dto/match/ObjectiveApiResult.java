@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ObjectiveApiResult {
 
-    private boolean first;
-    private int kills;
+    private Boolean first;
+    private Integer kills;
 }

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class MiniSeriesApiResult {
 
     private String progress;
-    private int target;
-    private int wins;
-    private int losses;
+    private Integer target;
+    private Integer wins;
+    private Integer losses;
 }

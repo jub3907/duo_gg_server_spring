@@ -32,9 +32,9 @@ public class Match {
     private Long gameStartTimestamp;
     private String gameType;
     private String gameVersion;
-    private int mapId;
+    private Integer mapId;
     private String platformId;
-    private int queueId;
+    private Integer queueId;
     private String tournamentCode;
 
 
