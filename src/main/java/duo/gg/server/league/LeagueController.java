@@ -34,7 +34,4 @@ public class LeagueController {
         return leagueService.getRanking(offset, limit);
     }
 
-
-    //TODO: Get - 랭킹 20등까지의 정보 추출
-    //아이콘, 이름, 티어, 점수, 레벨, 승, 패, 랭킹, 승률
 }
