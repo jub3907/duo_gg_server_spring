@@ -3,6 +3,7 @@ package duo.gg.server.league;
 import duo.gg.server.api.dto.league.LeagueEntryApiResult;
 import duo.gg.server.api.dto.league.LeagueItemApiResult;
 import duo.gg.server.constant.QueueEnum;
+import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.league.entry.League;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,14 @@ public class LeagueRepository {
     public List<League> findLeaguesBySummonerId(String summonerId) {
         return em.createQuery("select l from League l where l.summonerId = :summonerId", League.class)
                 .setParameter("summonerId", summonerId)
+                .getResultList();
+    }
+
+
+    public List<League> findRanking(Integer offset, Integer limit) {
+        return em.createQuery("select l from League l order by l.leaguePoints desc", League.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
                 .getResultList();
     }
 

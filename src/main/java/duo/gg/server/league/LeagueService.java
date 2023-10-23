@@ -5,6 +5,7 @@ import duo.gg.server.api.dto.league.LeagueItemApiResult;
 import duo.gg.server.api.dto.league.LeagueListApiResult;
 import duo.gg.server.api.service.ApiService;
 import duo.gg.server.constant.QueueEnum;
+import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.league.entry.League;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -58,6 +60,11 @@ public class LeagueService {
             }
 
         }
+    }
 
+
+    public List<RankingDto> getRanking(Integer offset, Integer limit) {
+        List<League> ranking = repository.findRanking(offset, limit);
+        return ranking.stream().map(RankingDto::new).collect(Collectors.toList());
     }
 }
