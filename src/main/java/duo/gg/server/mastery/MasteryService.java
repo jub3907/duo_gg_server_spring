@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -52,53 +53,49 @@ public class MasteryService {
     }
 
 
-    public Result<MasteryDto> findMasteriesByPuuid(String puuid, Integer limit) {
+    public List<MasteryDto> findMasteriesByPuuid(String puuid, Integer limit) {
         if (limit == null) {
-            return new Result<MasteryDto>(
-                    new MasteryDto().masteryMapper(
-                            masteryRepository.findByPuuid(puuid)
-                    )
-            );
+            return masteryRepository.findByPuuid(puuid)
+                    .stream()
+                    .map(MasteryDto::new)
+                    .collect(Collectors.toList());
+
         } else {
-            return new Result<MasteryDto>(
-                    new MasteryDto().masteryMapper(
-                            masteryRepository.findByPuuid(puuid, limit)
-                    )
-            );
+            return masteryRepository.findByPuuid(puuid, limit)
+                    .stream()
+                    .map(MasteryDto::new)
+                    .collect(Collectors.toList());
         }
     }
 
-    public Result<MasteryDto> findMasteriesBySummonerId(String summonerId, Integer limit) {
+    public List<MasteryDto> findMasteriesBySummonerId(String summonerId, Integer limit) {
         if (limit == null) {
-            return new Result<MasteryDto>(
-                    new MasteryDto().masteryMapper(
-                            masteryRepository.findBySummonerId(summonerId)
-                    )
-            );
+
+            return masteryRepository.findBySummonerId(summonerId)
+                    .stream()
+                    .map(MasteryDto::new)
+                    .collect(Collectors.toList());
         } else {
-            return new Result<MasteryDto>(
-                    new MasteryDto().masteryMapper(
-                            masteryRepository.findBySummonerId(summonerId, limit)
-                    )
-            );
+            return masteryRepository.findBySummonerId(summonerId, limit)
+                    .stream()
+                    .map(MasteryDto::new)
+                    .collect(Collectors.toList());
         }
     }
 
-    public Result<MasteryDto> findMasteriesByName(String name, Integer limit) {
+    public List<MasteryDto> findMasteriesByName(String name, Integer limit) {
         String puuid = summonerService.getPuuidByName(name);
 
         if (limit == null) {
-            return new Result<MasteryDto>(
-                    new MasteryDto().masteryMapper(
-                            masteryRepository.findByPuuid(puuid)
-                    )
-            );
+            return masteryRepository.findByPuuid(puuid)
+                    .stream()
+                    .map(MasteryDto::new)
+                    .collect(Collectors.toList());
         } else {
-            return new Result<MasteryDto>(
-                    new MasteryDto().masteryMapper(
-                            masteryRepository.findByPuuid(puuid, limit)
-                    )
-            );
+            return masteryRepository.findByPuuid(puuid, limit)
+                    .stream()
+                    .map(MasteryDto::new)
+                    .collect(Collectors.toList());
         }
     }
 

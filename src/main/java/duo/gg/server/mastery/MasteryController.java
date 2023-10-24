@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Slf4j
 @RestController
@@ -35,17 +37,17 @@ public class MasteryController {
     }
 
     @GetMapping("/mastery/by-puuid/{puuid}")
-    public Result<MasteryDto> getByPuuid(@PathVariable String puuid, @RequestParam(required = false) Integer limit) {
+    public List<MasteryDto> getByPuuid(@PathVariable String puuid, @RequestParam(required = false) Integer limit) {
         return service.findMasteriesByPuuid(puuid, limit);
     }
 
     @GetMapping("/mastery/by-summoner/{summonerId}")
-    public Result<MasteryDto> getBySummonerId(@PathVariable String summonerId, @RequestParam(required = false) Integer limit) {
+    public List<MasteryDto> getBySummonerId(@PathVariable String summonerId, @RequestParam(required = false) Integer limit) {
         return service.findMasteriesBySummonerId(summonerId, limit);
     }
 
     @GetMapping("/mastery/by-name/{name}")
-    public Result<MasteryDto> getByName(@PathVariable String name, @RequestParam(required = false) Integer limit) {
+    public List<MasteryDto> getByName(@PathVariable String name, @RequestParam(required = false) Integer limit) {
         return service.findMasteriesByName(name, limit);
     }
 }
