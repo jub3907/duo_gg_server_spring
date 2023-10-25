@@ -18,7 +18,7 @@ public class CommentRepository {
         em.persist(comment);
     }
 
-    public Comment findById(String commentId) {
+    public Comment findById(Long commentId) {
         return em.find(Comment.class, commentId);
     }
 

@@ -26,7 +26,7 @@ public class CommentService {
         repository.save(comment);
     }
 
-    public void delete(String commentId, CommentDeleteForm form) {
+    public void delete(Long commentId, CommentDeleteForm form) {
         Comment comment = repository.findById(commentId);
         //TODO: Comment Not Exist Error
 

@@ -31,7 +31,7 @@ public class CommentController {
 
     @Transactional
     @DeleteMapping("/comment/{commentId}")
-    public void deleteComment(@PathVariable String commentId,
+    public void deleteComment(@PathVariable Long commentId,
                               @Valid @RequestBody CommentDeleteForm form) {
         commentService.delete(commentId, form);
     }
