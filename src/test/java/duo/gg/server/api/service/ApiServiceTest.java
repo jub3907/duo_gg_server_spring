@@ -17,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static duo.gg.server.TestConstant.*;
 import static org.assertj.core.api.Assertions.*;
 
 
@@ -28,19 +29,6 @@ class ApiServiceTest {
     @Autowired
     ApiService apiService;
 
-    private final String name = "21세기광부";
-    private final String puuid = "WhX0_L0SzY-UpxFTZFvHASktCbDc-loiJln6RnMNU5Ptwj_6lw98sE-iOPamqp_GNs71T37LFIndLg";
-    private final String summonerId = "JlGUV6boigRMNJTG25zAzGRjFMbwnl6XDKbbzqrShuH1Jw";
-    private final String accountId = "274o8M0Xs6IGliyTC6k6t6DgKL3JZ6azB9hrR9eNECdL";
-    private final String tagLine = "KR1";
-
-    private final Long championId = 412L;
-    private final String championName = "Thresh";
-
-    private final String leagueId = "966df365-7dea-34ca-839a-2cec050ba64a";
-    private final String leagueTier = TierEnum.CHALLENGER.name();
-
-    private final String matchId = "KR_6730690706";
 
     @Test
     void getAccountByPuuid() {
