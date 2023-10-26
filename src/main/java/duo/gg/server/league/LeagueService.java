@@ -5,6 +5,7 @@ import duo.gg.server.api.dto.league.LeagueItemApiResult;
 import duo.gg.server.api.dto.league.LeagueListApiResult;
 import duo.gg.server.api.service.ApiService;
 import duo.gg.server.constant.QueueEnum;
+import duo.gg.server.league.dto.LeagueDto;
 import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.league.entry.League;
 import lombok.RequiredArgsConstructor;
@@ -40,14 +41,14 @@ public class LeagueService {
             if (findLeague.isEmpty()) {
                 repository.insertByItemApiResult(entry, leagueId, tier, queueType);
             } else {
-                repository.updateByItemApiResult(findLeague.get(), entry);
+                repository.updateByItemApiResult(findLeague.get(), entry, leagueId, tier, queueType);
             }
         }
     }
 
     public void upsertBySummonerId(String summonerId) {
         List<LeagueEntryApiResult> leagueEntriesApiResults = apiService.getLeagueEntriesBySummonerId(summonerId);
-        List<League> findLeagues = repository.findLeaguesBySummonerId(summonerId);
+        List<League> findLeagues = repository.findBySummonerId(summonerId);
 
         for (LeagueEntryApiResult result : leagueEntriesApiResults) {
             QueueEnum queueType = QueueEnum.valueOf(result.getQueueType());
@@ -66,5 +67,11 @@ public class LeagueService {
     public List<RankingDto> getRanking(Integer offset, Integer limit) {
         List<League> ranking = repository.findRanking(offset, limit);
         return ranking.stream().map(RankingDto::new).collect(Collectors.toList());
+    }
+
+    public List<LeagueDto> getLeaguesInfo(String summonerId) {
+        List<League> leagues = repository.findBySummonerId(summonerId);
+        return leagues.stream().map(LeagueDto::new)
+                .collect(Collectors.toList());
     }
 }

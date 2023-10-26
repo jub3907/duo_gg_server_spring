@@ -3,6 +3,7 @@ package duo.gg.server.league.entry;
 import duo.gg.server.api.dto.league.LeagueEntryApiResult;
 import duo.gg.server.api.dto.league.LeagueItemApiResult;
 import duo.gg.server.constant.QueueEnum;
+import duo.gg.server.constant.TierEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +21,9 @@ public class League {
 
     private String leagueId;
 
-    private String tier;
+
+    @Enumerated(EnumType.STRING)
+    private TierEnum tier;
 
     @Enumerated(EnumType.STRING)
     private QueueEnum queueType;
@@ -41,7 +44,7 @@ public class League {
     public League(LeagueItemApiResult entry,
                   String leagueId, String tier, String queueType) {
         this.leagueId = leagueId;
-        this.tier = tier;
+        this.tier = TierEnum.valueOf(tier);
         this.queueType = QueueEnum.valueOf(queueType);
 
         this.freshBlood = entry.getFreshBlood();
@@ -59,7 +62,7 @@ public class League {
 
     public League(LeagueEntryApiResult result) {
         leagueId = result.getLeagueId();
-        tier = result.getTier();
+        tier = TierEnum.valueOf(result.getTier());
         queueType = QueueEnum.valueOf(result.getQueueType());
 
         freshBlood = result.getFreshBlood();
@@ -76,12 +79,17 @@ public class League {
         rank = result.getRank();
     }
 
-    public void updateByItem(LeagueItemApiResult result) {
+    public void updateByItem(LeagueItemApiResult result,
+                             String leagueId, String tier, String queueType) {
 
         this.freshBlood = result.getFreshBlood();
         this.inactive = result.getInactive();
         this.veteran = result.getVeteran();
         this.hotStreak = result.getHotStreak();
+
+        this.tier = TierEnum.valueOf(tier);
+        this.leagueId = leagueId;
+        this.queueType = QueueEnum.valueOf(queueType);
 
         this.wins = result.getWins();
         this.leaguePoints = result.getLeaguePoints();
@@ -94,7 +102,7 @@ public class League {
     public void updateByEntry(LeagueEntryApiResult result) {
 
         leagueId = result.getLeagueId();
-        tier = result.getTier();
+        tier = TierEnum.valueOf(result.getTier());
         this.freshBlood = result.getFreshBlood();
         this.inactive = result.getInactive();
         this.veteran = result.getVeteran();

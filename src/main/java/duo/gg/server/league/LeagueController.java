@@ -1,5 +1,6 @@
 package duo.gg.server.league;
 
+import duo.gg.server.league.dto.LeagueDto;
 import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.summoner.SummonerService;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,12 @@ public class LeagueController {
     @GetMapping("/ranking")
     public List<RankingDto> ranking(@RequestParam Integer offset, @RequestParam Integer limit) {
         return leagueService.getRanking(offset, limit);
+    }
+
+    @GetMapping("/league/{name}")
+    public List<LeagueDto> getRanking(@PathVariable String name) {
+        String summonerId = summonerService.getSummonerIdByName(name);
+        return leagueService.getLeaguesInfo(summonerId);
     }
 
 }
