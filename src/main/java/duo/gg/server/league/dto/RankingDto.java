@@ -16,8 +16,4 @@ public class RankingDto {
     private Integer summonerLevel;
     private Integer wins;
     private Integer losses;
-
-    public RankingDto(League league) {
-
-    }
 }
