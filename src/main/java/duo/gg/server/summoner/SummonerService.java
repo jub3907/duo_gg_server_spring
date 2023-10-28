@@ -4,6 +4,7 @@ import duo.gg.server.api.dto.summoner.SummonerApiResult;
 import duo.gg.server.api.service.ApiService;
 import duo.gg.server.league.LeagueRepository;
 import duo.gg.server.league.dto.RankingDto;
+import duo.gg.server.summoner.dto.SummonerDto;
 import duo.gg.server.summoner.entity.Summoner;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -53,5 +54,10 @@ public class SummonerService {
         } else {
             return findSummoner.get().getId();
         }
+    }
+
+    public SummonerDto getSummonerByName(String name) {
+        Optional<Summoner> findSummoner = summonerRepository.findByName(name);
+        return findSummoner.map(SummonerDto::new).orElse(null);
     }
 }

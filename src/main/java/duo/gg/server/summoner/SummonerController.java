@@ -1,5 +1,6 @@
 package duo.gg.server.summoner;
 
+import duo.gg.server.summoner.dto.SummonerDto;
 import duo.gg.server.summoner.entity.Summoner;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,12 +27,8 @@ public class SummonerController {
         service.upsertSummoner(name);
     }
 
-    // TODO: Entity to DTO
     @GetMapping("/api/summoner/{name}")
-    public Summoner findByName(@PathVariable String name) {
-        Optional<Summoner> byName = repository.findByName(name);
-        log.info("{}", byName.get());
-        return byName.get();
+    public SummonerDto findByName(@PathVariable String name) {
+        return service.getSummonerByName(name);
     }
-
 }
