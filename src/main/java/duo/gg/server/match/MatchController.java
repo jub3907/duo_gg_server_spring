@@ -1,19 +1,15 @@
 package duo.gg.server.match;
 
-import duo.gg.server.api.service.ApiService;
 import duo.gg.server.match.dto.MatchBasicDto;
 import duo.gg.server.match.dto.MatchDetailDto;
-import duo.gg.server.match.entity.Match;
+import duo.gg.server.match.entity.MatchInfo;
 import duo.gg.server.summoner.SummonerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -44,7 +40,7 @@ public class MatchController {
 
         String puuid = summonerService.getPuuidByName(name);
         List<String> recentMatchIds = matchService.getMatchIdsByPuuid(puuid, start, count);
-        List<Match> matches = matchRepository.findByIds(recentMatchIds);
+        List<MatchInfo> matches = matchRepository.findByIds(recentMatchIds);
 
         return matchService.getMatchBasics(matches, puuid);
     }
@@ -53,7 +49,7 @@ public class MatchController {
     public MatchDetailDto getMatchDetail(@RequestParam String matchId,
                                          @RequestParam String name) {
         String puuid = summonerService.getPuuidByName(name);
-        Match match = matchRepository.findById(matchId).get();
+        MatchInfo match = matchRepository.findById(matchId).get();
 
         return matchService.getMatchDetail(match, puuid);
     }

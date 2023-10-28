@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Match {
+public class MatchInfo {
     @Id
     @Column(name = "match_id")
     private String id;
@@ -38,13 +38,13 @@ public class Match {
     private String tournamentCode;
 
 
-    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "matchInfo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Participant> participants = new ArrayList<>();
 
-    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "matchInfo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Team> teams = new ArrayList<>();
 
-    public Match(MatchApiResult result) {
+    public MatchInfo(MatchApiResult result) {
         id = result.getMetadata().getMatchId();
         dataVersion = result.getMetadata().getDataVersion();
         gameCreation = result.getInfo().getGameCreation();

@@ -1,7 +1,7 @@
 package duo.gg.server.match.dto;
 
 import duo.gg.server.constant.TeamId;
-import duo.gg.server.match.entity.Match;
+import duo.gg.server.match.entity.MatchInfo;
 import duo.gg.server.match.entity.Participant;
 
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class MatchBasicDto {
     // 닉네임
     // 챔피언 아이디
 
-    public MatchBasicDto(Match match, String puuid) {
+    public MatchBasicDto(MatchInfo match, String puuid) {
         gameDuration = match.getGameDuration();
         gameCreation = match.getGameCreation();
 

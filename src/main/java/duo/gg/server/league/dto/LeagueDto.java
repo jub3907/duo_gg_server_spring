@@ -28,7 +28,7 @@ public class LeagueDto {
     public LeagueDto(League league) {
         queueType = league.getQueueType();
         tier = league.getTier();
-        rank = league.getRank();
+        rank = league.getRankInfo();
         freshBlood = league.getFreshBlood();
         inactive = league.getInactive();
         veteran = league.getVeteran();

@@ -1,7 +1,7 @@
 package duo.gg.server.match.dto;
 
 import duo.gg.server.constant.TeamId;
-import duo.gg.server.match.entity.Match;
+import duo.gg.server.match.entity.MatchInfo;
 import duo.gg.server.match.entity.Participant;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +22,7 @@ public class MatchDetailDto {
 
     private PerkDto perk;
 
-    public MatchDetailDto(Match match, String puuid) {
+    public MatchDetailDto(MatchInfo match, String puuid) {
         gameDuration = match.getGameDuration();
         if (match.getParticipants().get(0).getWin()) {
         } else {

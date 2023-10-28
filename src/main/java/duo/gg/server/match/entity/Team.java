@@ -17,7 +17,7 @@ public class Team {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "match_id")
-    private Match match;
+    private MatchInfo matchInfo;
 
     private Integer teamId;
     private Boolean win;
@@ -29,8 +29,8 @@ public class Team {
     private Integer riftHeraldKills;
     private Integer towerKills;
 
-    Team(TeamApiResult result, Match match) {
-        this.match = match;
+    Team(TeamApiResult result, MatchInfo match) {
+        this.matchInfo = match;
 
         teamId = result.getTeamId();
         win = result.getWin();

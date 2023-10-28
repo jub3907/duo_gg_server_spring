@@ -2,9 +2,8 @@ package duo.gg.server;
 
 import duo.gg.server.match.MatchRepository;
 import duo.gg.server.match.MatchService;
-import duo.gg.server.match.entity.Match;
+import duo.gg.server.match.entity.MatchInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @Slf4j
 @SpringBootTest
-public class MatchTest {
+public class MatchInfoTest {
 
     @Autowired
     MatchService service;
@@ -34,7 +33,7 @@ public class MatchTest {
         //when
 
         List<String> recentMatchIds = service.getMatchIdsByPuuid(puuid, 0, 3);
-        List<Match> matches = repository.findByIds(recentMatchIds);
+        List<MatchInfo> matches = repository.findByIds(recentMatchIds);
 
         //then
         assertThat(ids.size()).isEqualTo(3);

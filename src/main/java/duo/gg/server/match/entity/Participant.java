@@ -1,7 +1,6 @@
 package duo.gg.server.match.entity;
 
 import duo.gg.server.api.dto.match.ParticipantApiResult;
-import duo.gg.server.api.dto.perk.PerksApiResult;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +19,7 @@ public class Participant {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "match_id")
-    private Match match;
+    private MatchInfo matchInfo;
 
     @Embedded
     private Perk perks;
@@ -177,8 +176,8 @@ public class Participant {
     private Integer summoner2Casts;
     private Integer summoner2Id;
 
-    public Participant(ParticipantApiResult result, Match match) {
-        this.match = match;
+    public Participant(ParticipantApiResult result, MatchInfo match) {
+        this.matchInfo = match;
 
         perks = new Perk(result.getPerks());
         puuid = result.getPuuid();

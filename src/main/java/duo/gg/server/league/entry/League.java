@@ -39,7 +39,7 @@ public class League {
 
     private String summonerId;
     private String summonerName;
-    private String rank;
+    private String rankInfo;
 
     public League(LeagueItemApiResult entry,
                   String leagueId, String tier, String queueType) {
@@ -57,7 +57,7 @@ public class League {
         this.losses = entry.getLosses();
         this.summonerId = entry.getSummonerId();
         this.summonerName = entry.getSummonerName();
-        this.rank = entry.getRank();
+        this.rankInfo = entry.getRank();
     }
 
     public League(LeagueEntryApiResult result) {
@@ -76,7 +76,7 @@ public class League {
 
         summonerId = result.getSummonerId();
         summonerName = result.getSummonerName();
-        rank = result.getRank();
+        rankInfo = result.getRank();
     }
 
     public void updateByItem(LeagueItemApiResult result,
@@ -96,7 +96,7 @@ public class League {
         this.losses = result.getLosses();
 
         this.summonerName = result.getSummonerName();
-        this.rank = result.getRank();
+        this.rankInfo = result.getRank();
     }
 
     public void updateByEntry(LeagueEntryApiResult result) {
@@ -111,6 +111,6 @@ public class League {
         leaguePoints = result.getLeaguePoints();
         losses = result.getLosses();
         summonerName = result.getSummonerName();
-        rank = result.getRank();
+        rankInfo = result.getRank();
     }
 }
