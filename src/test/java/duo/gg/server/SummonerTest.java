@@ -32,7 +32,7 @@ public class SummonerTest {
 
 
         //then
-        assertThat(summoner.getSummonerId()).isEqualTo(summonerId)
+        assertThat(summoner.getSummonerId()).isEqualTo(summonerId);
 
     }
 }
