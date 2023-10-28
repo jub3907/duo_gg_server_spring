@@ -8,6 +8,9 @@ import duo.gg.server.constant.QueueEnum;
 import duo.gg.server.league.dto.LeagueDto;
 import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.league.entry.League;
+import duo.gg.server.summoner.SummonerRepository;
+import duo.gg.server.summoner.SummonerService;
+import duo.gg.server.summoner.entity.Summoner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,7 @@ import java.util.stream.Collectors;
 public class LeagueService {
     
     private final ApiService apiService;
+    private final SummonerRepository summonerRepository;
     private final LeagueRepository repository;
     
     public void upsertRanking() {
@@ -65,8 +69,7 @@ public class LeagueService {
 
 
     public List<RankingDto> getRanking(Integer offset, Integer limit) {
-        List<League> ranking = repository.findRanking(offset, limit);
-        return ranking.stream().map(RankingDto::new).collect(Collectors.toList());
+        return repository.findRanking(offset, limit);
     }
 
     public List<LeagueDto> getLeaguesInfo(String summonerId) {

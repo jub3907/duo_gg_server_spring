@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -42,4 +43,9 @@ public class SummonerRepository {
                 .stream().findAny();
     }
 
+    public List<Summoner> findByNames(List<String> names) {
+        return em.createQuery("select s from Summoner s where s.name in :names", Summoner.class)
+                .setParameter("names", names)
+                .getResultList();
+    }
 }

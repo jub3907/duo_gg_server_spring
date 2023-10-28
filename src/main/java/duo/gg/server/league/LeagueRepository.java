@@ -3,6 +3,7 @@ package duo.gg.server.league;
 import duo.gg.server.api.dto.league.LeagueEntryApiResult;
 import duo.gg.server.api.dto.league.LeagueItemApiResult;
 import duo.gg.server.constant.QueueEnum;
+import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.league.entry.League;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -32,8 +33,11 @@ public class LeagueRepository {
     }
 
 
-    public List<League> findRanking(Integer offset, Integer limit) {
-        return em.createQuery("select l from League l order by l.leaguePoints desc", League.class)
+    public List<RankingDto> findRanking(Integer offset, Integer limit) {
+        return em.createQuery(
+                "select l, s.profileIconId, s.summonerLevel " +
+                        "from League l join Summoner s on s.name = l.summonerName " +
+                        "order by l.leaguePoints desc", RankingDto.class)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
