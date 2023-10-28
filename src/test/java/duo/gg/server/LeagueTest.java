@@ -4,6 +4,7 @@ package duo.gg.server;
 import duo.gg.server.constant.TierEnum;
 import duo.gg.server.league.LeagueRepository;
 import duo.gg.server.league.LeagueService;
+import duo.gg.server.league.dto.LeagueDto;
 import duo.gg.server.league.dto.RankingDto;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
@@ -46,6 +47,7 @@ public class LeagueTest {
         service.upsertBySummonerId(TestConstant.summonerId);
 
         //when
+        List<LeagueDto> leaguesInfo = service.getLeaguesInfo(TestConstant.summonerId);
 
         //then
 
