@@ -9,11 +9,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static duo.gg.server.TestConstant.*;
 import static org.assertj.core.api.Assertions.*;
 
 @Slf4j
+@Transactional
 @SpringBootTest
 public class SummonerTest {
     @Autowired
@@ -30,9 +32,7 @@ public class SummonerTest {
         //when
         SummonerDto summoner = service.getSummonerByName(name);
 
-
         //then
         assertThat(summoner.getSummonerId()).isEqualTo(summonerId);
-
     }
 }

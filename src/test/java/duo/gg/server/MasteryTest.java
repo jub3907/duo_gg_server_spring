@@ -45,8 +45,5 @@ public class MasteryTest {
         assertThat(masteriesByPuuid.size()).isEqualTo(10);
         assertThat(masteriesByName.size()).isEqualTo(10);
         assertThat(masteriesBySummonerId.size()).isEqualTo(10);
-
-
     }
-
 }
