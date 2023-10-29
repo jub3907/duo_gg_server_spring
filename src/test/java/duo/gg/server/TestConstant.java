@@ -5,9 +5,9 @@ import duo.gg.server.constant.TierEnum;
 public class TestConstant {
 
     public static final String name = "21세기광부";
-    public static final String puuid = "WhX0_L0SzY-UpxFTZFvHASktCbDc-loiJln6RnMNU5Ptwj_6lw98sE-iOPamqp_GNs71T37LFIndLg";
-    public static final String summonerId = "JlGUV6boigRMNJTG25zAzGRjFMbwnl6XDKbbzqrShuH1Jw";
-    public static final String accountId = "274o8M0Xs6IGliyTC6k6t6DgKL3JZ6azB9hrR9eNECdL";
+    public static final String puuid = "pDc4KEFHhKtuJOa02j9Wq4A14SqJhT4wZAAXNvCLf86KRgmCq5XrqJiuNvvwzIyD0tno2CafbS1M9w";
+    public static final String summonerId = "lVv3ZvUuTDNGafirTG0ml7vm3Tn9-679-zWr_3TqNMPKjA";
+    public static final String accountId = "q2iBNhAfvAQEykaHInmIx-0jALao8I4VwsnnFXHyhbhz";
     public static final String tagLine = "KR1";
 
     public static final Long championId = 412L;

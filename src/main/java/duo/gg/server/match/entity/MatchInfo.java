@@ -64,12 +64,12 @@ public class MatchInfo {
         participants = result.getInfo()
                 .getParticipants()
                 .stream()
-                .map((participant) -> new Participant(participant, this))
+                .map(participant -> new Participant(participant, this))
                 .collect(Collectors.toList());
 
         teams = result.getInfo()
                 .getTeams()
-                .stream().map((team) -> new Team(team, this))
+                .stream().map(team -> new Team(team, this))
                 .collect(Collectors.toList());
     }
 }

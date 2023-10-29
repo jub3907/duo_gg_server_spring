@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ import static duo.gg.server.TestConstant.*;
 import static org.assertj.core.api.Assertions.*;
 
 @Slf4j
+@Transactional
 @SpringBootTest
 public class MatchInfoTest {
 
@@ -24,6 +27,7 @@ public class MatchInfoTest {
     MatchRepository repository;
 
     @Test
+    @Rollback(value = false)
     public void updateAndGetRecentMatches() {
         //given
         List<String> ids = service.getMatchIdsByPuuid(puuid, 0, 3);
