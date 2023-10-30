@@ -1,10 +1,13 @@
 package duo.gg.server.summoner;
 
+import duo.gg.server.common.ResponseBody;
 import duo.gg.server.summoner.dto.SummonerDto;
 import duo.gg.server.summoner.entity.Summoner;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +26,9 @@ public class SummonerController {
 
     @Transactional
     @PostMapping("/api/summoner/{name}")
-    public void upsertByName(@PathVariable String name) {
+    public ResponseEntity<String> upsertByName(@PathVariable String name) {
         service.upsertSummoner(name);
+        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
     @GetMapping("/api/summoner/{name}")

@@ -14,11 +14,9 @@ import java.util.stream.Collectors;
 public class PostService {
     private final PostRepository repository;
 
-    public PostDto save(PostForm form) {
+    public void save(PostForm form) {
         Post post = new Post(form);
         repository.save(post);
-
-        return new PostDto(post);
     }
 
     public List<PostDto> findByPage(int offset, int limit) {

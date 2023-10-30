@@ -1,9 +1,12 @@
 package duo.gg.server.mastery;
 
+import duo.gg.server.common.ResponseBody;
 import duo.gg.server.common.Result;
 import duo.gg.server.mastery.dto.MasteryDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,20 +23,23 @@ public class MasteryController {
 
     @Transactional
     @PostMapping("/mastery/by-puuid/{puuid}")
-    public void upsertByPuuid(@PathVariable String puuid) {
+    public ResponseEntity<String> upsertByPuuid(@PathVariable String puuid) {
         service.upsertMasteriesByPuuid(puuid);
+        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
     @Transactional
     @PostMapping("/mastery/by-summoner/{summonerId}")
-    public void upsertBySummonerId(@PathVariable String summonerId) {
+    public ResponseEntity<String> upsertBySummonerId(@PathVariable String summonerId) {
         service.upsertMasteriesBySummonerId(summonerId);
+        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
     @Transactional
     @PostMapping("/mastery/by-name/{name}")
-    public void upsertByName(@PathVariable String name) {
+    public ResponseEntity<String> upsertByName(@PathVariable String name) {
         service.upsertMasteriesByName(name);
+        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
     @GetMapping("/mastery/by-puuid/{puuid}")

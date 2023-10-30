@@ -1,10 +1,13 @@
 package duo.gg.server.league;
 
+import duo.gg.server.common.ResponseBody;
 import duo.gg.server.league.dto.LeagueDto;
 import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.summoner.SummonerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +28,10 @@ public class LeagueController {
 
     @Transactional
     @PostMapping("/league/{name}")
-    public void upsertByName(@PathVariable String name) {
+    public ResponseEntity<String> upsertByName(@PathVariable String name) {
         String summonerId = summonerService.getSummonerIdByName(name);
         leagueService.upsertBySummonerId(summonerId);
+        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
     @GetMapping("/ranking")
