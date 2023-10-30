@@ -3,6 +3,8 @@ package duo.gg.server.comment;
 import duo.gg.server.comment.dto.CommentDeleteForm;
 import duo.gg.server.comment.dto.CommentDto;
 import duo.gg.server.comment.dto.CommentForm;
+import duo.gg.server.comment.error.CommentNotExist;
+import duo.gg.server.comment.error.PasswordNotMatch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,12 +30,14 @@ public class CommentService {
 
     public void delete(Long commentId, CommentDeleteForm form) {
         Comment comment = repository.findById(commentId);
-        //TODO: Comment Not Exist Error
+        if (comment == null) {
+            throw new CommentNotExist();
+        }
 
         if (encoder.matches(form.getPassword(), comment.getPassword())) {
             repository.delete(comment);
         } else {
-            //TODO: Password Not Match Error
+            throw new PasswordNotMatch();
         }
     }
 
