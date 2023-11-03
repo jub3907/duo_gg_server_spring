@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatchBasicDto {
+    private String matchId;
     // 플레이타임
     private Long gameDuration;
     // 언제 플레이 했는지
@@ -59,8 +60,10 @@ public class MatchBasicDto {
     // 블루, 레드팀 참여자 리스트
     // 닉네임
     // 챔피언 아이디
+    // puuid
 
     public MatchBasicDto(MatchInfo match, String puuid) {
+        matchId = match.getId();
         gameDuration = match.getGameDuration();
         gameCreation = match.getGameCreation();
 
@@ -69,9 +72,9 @@ public class MatchBasicDto {
 
         for (Participant participant : match.getParticipants()) {
             if (participant.getTeamId() == TeamId.BLUE) {
-                blue.add(new ParticipantBasicDto(participant.getRiotIdName(), participant.getChampionId()));
+                blue.add(new ParticipantBasicDto(participant.getRiotIdName(), participant.getChampionId(), participant.getPuuid()));
             } else {
-                red.add(new ParticipantBasicDto(participant.getRiotIdName(), participant.getChampionId()));
+                red.add(new ParticipantBasicDto(participant.getRiotIdName(), participant.getChampionId(), participant.getPuuid()));
             }
 
             if (participant.getPuuid().equals(puuid)) {

@@ -13,6 +13,7 @@ public class ParticipantDetailDto {
     private String teamPosition;
     // 이름
     private String riotIdName;
+    private String puuid;
     // 티어
     //TODO: 티어 추가
 
@@ -61,6 +62,7 @@ public class ParticipantDetailDto {
     public ParticipantDetailDto(Participant participant) {
         teamPosition = participant.getTeamPosition();
         riotIdName = participant.getRiotIdName();
+        puuid = participant.getPuuid();
         teamId = participant.getTeamId();
         champLevel = participant.getChampLevel();
         championName = participant.getChampionName();

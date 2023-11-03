@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class MatchDetailDto {
     // 전체 플레이 시간
+    private Long gameCreation;
     private Long gameDuration;
     private Integer winner;
 
@@ -23,6 +24,7 @@ public class MatchDetailDto {
     private PerkDto perk;
 
     public MatchDetailDto(MatchInfo match, String puuid) {
+        gameCreation = match.getGameCreation();
         gameDuration = match.getGameDuration();
         if (match.getParticipants().get(0).getWin()) {
         } else {
