@@ -25,13 +25,13 @@ public class SummonerController {
     private final SummonerRepository repository;
 
     @Transactional
-    @PostMapping("/api/summoner/{name}")
+    @PostMapping("/summoner/{name}")
     public ResponseEntity<String> upsertByName(@PathVariable String name) {
         service.upsertSummoner(name);
         return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
-    @GetMapping("/api/summoner/{name}")
+    @GetMapping("/summoner/{name}")
     public SummonerDto findByName(@PathVariable String name) {
         return service.getSummonerByName(name);
     }
