@@ -1,6 +1,7 @@
 package duo.gg.server.league.dto;
 
 import duo.gg.server.league.entry.League;
+import duo.gg.server.summoner.entity.Summoner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,11 +10,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RankingDto {
-    private String profileIconId;
+    private Integer profileIconId;
     private String summonerName;
     private String tier;
-    private String leaguePoints;
-    private Integer summonerLevel;
+    private Integer leaguePoints;
+    private Long summonerLevel;
     private Integer wins;
     private Integer losses;
+
+    public RankingDto(League l, Summoner s) {
+        if (s != null) {
+            this.profileIconId = s.getProfileIconId();
+            this.summonerLevel = s.getSummonerLevel();
+        }
+        this.summonerName = l.getSummonerName();
+        this.tier = l.getTier().toString();
+        this.leaguePoints = l.getLeaguePoints();
+        this.wins = l.getWins();
+        this.losses = l.getLosses();
+
+    }
 }

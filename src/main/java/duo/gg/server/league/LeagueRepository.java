@@ -5,13 +5,19 @@ import duo.gg.server.api.dto.league.LeagueItemApiResult;
 import duo.gg.server.constant.QueueEnum;
 import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.league.entry.League;
+import duo.gg.server.summoner.entity.Summoner;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+@Slf4j
 @Repository
 @RequiredArgsConstructor
 public class LeagueRepository {
@@ -34,13 +40,27 @@ public class LeagueRepository {
 
 
     public List<RankingDto> findRanking(Integer offset, Integer limit) {
-        return em.createQuery(
-                    "select l, s.profileIconId, s.summonerLevel " +
-                            "from League l left join Summoner s on l.summonerName = s.name " +
-                            "order by l.leaguePoints desc")
+        List resultList = em.createQuery(
+                        "select l, s " +
+                                "from League l left join Summoner s on l.summonerName = s.name " +
+                                "order by l.leaguePoints desc")
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
+
+        List<RankingDto> result = new ArrayList<RankingDto>();
+
+        Iterator itr = resultList.iterator();
+
+        while (itr.hasNext()){
+            Object[] obj = (Object[]) itr.next();
+            League league = (League) obj[0];
+            Summoner summoner = (Summoner) obj[1];
+
+            result.add(new RankingDto(league, summoner));
+        }
+
+        return result;
     }
 
 
