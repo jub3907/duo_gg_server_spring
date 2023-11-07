@@ -2,6 +2,7 @@ package duo.gg.server.summoner;
 
 import duo.gg.server.api.dto.summoner.SummonerApiResult;
 import duo.gg.server.api.service.ApiService;
+import duo.gg.server.comment.error.NoSummonerInfo;
 import duo.gg.server.league.LeagueRepository;
 import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.summoner.dto.SummonerDto;
@@ -58,6 +59,6 @@ public class SummonerService {
 
     public SummonerDto getSummonerByName(String name) {
         Optional<Summoner> findSummoner = summonerRepository.findByName(name);
-        return findSummoner.map(SummonerDto::new).orElse(null);
+        return findSummoner.map(SummonerDto::new).orElseThrow(NoSummonerInfo::new);
     }
 }

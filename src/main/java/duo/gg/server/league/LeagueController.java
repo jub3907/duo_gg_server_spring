@@ -1,6 +1,7 @@
 package duo.gg.server.league;
 
 import duo.gg.server.common.ResponseBody;
+import duo.gg.server.constant.QueueEnum;
 import duo.gg.server.league.dto.LeagueDto;
 import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.summoner.SummonerService;
@@ -8,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,9 +37,21 @@ public class LeagueController {
     }
 
     @GetMapping("/league/{name}")
-    public List<LeagueDto> getRanking(@PathVariable String name) {
+    public List<LeagueDto> getLeagueInfos(@PathVariable String name) {
         String summonerId = summonerService.getSummonerIdByName(name);
-        return leagueService.getLeaguesInfo(summonerId);
+        return leagueService.getLeagueInfos(summonerId);
+    }
+
+    @GetMapping("/league/{name}/solo")
+    public LeagueDto getSoloLeagueInfo(@PathVariable String name) {
+        String summonerId = summonerService.getSummonerIdByName(name);
+        return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_SOLO_5x5);
+    }
+
+    @GetMapping("/league/{name}/free")
+    public LeagueDto getFreeLeagueInfo(@PathVariable String name) {
+        String summonerId = summonerService.getSummonerIdByName(name);
+        return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_FLEX_SR);
     }
 
 }

@@ -4,13 +4,12 @@ import duo.gg.server.api.dto.league.LeagueEntryApiResult;
 import duo.gg.server.api.dto.league.LeagueItemApiResult;
 import duo.gg.server.api.dto.league.LeagueListApiResult;
 import duo.gg.server.api.service.ApiService;
+import duo.gg.server.comment.error.NoLeagueInfo;
 import duo.gg.server.constant.QueueEnum;
 import duo.gg.server.league.dto.LeagueDto;
 import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.league.entry.League;
 import duo.gg.server.summoner.SummonerRepository;
-import duo.gg.server.summoner.SummonerService;
-import duo.gg.server.summoner.entity.Summoner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -72,9 +71,15 @@ public class LeagueService {
         return repository.findRanking(offset, limit);
     }
 
-    public List<LeagueDto> getLeaguesInfo(String summonerId) {
+    public List<LeagueDto> getLeagueInfos(String summonerId) {
         List<League> leagues = repository.findBySummonerId(summonerId);
         return leagues.stream().map(LeagueDto::new)
                 .collect(Collectors.toList());
+    }
+
+    public LeagueDto getLeagueInfo(String summonerId, QueueEnum queue) {
+        Optional<League> league = repository.findBySummonerIdAndQueueType(summonerId, queue);
+
+        return league.map(LeagueDto::new).orElseThrow(NoLeagueInfo::new);
     }
 }
