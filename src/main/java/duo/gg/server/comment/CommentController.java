@@ -24,11 +24,9 @@ public class CommentController {
     private final SummonerService summonerService;
 
     @Transactional
-    @PostMapping("/comment/{name}")
-    public ResponseEntity<String> createComment(@PathVariable String name,
+    @PostMapping("/comment/{puuid}")
+    public ResponseEntity<String> createComment(@PathVariable String puuid,
                               @Valid @RequestBody CommentForm form) {
-        String puuid = summonerService.getPuuidByName(name);
-
         commentService.create(puuid, form);
         return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
