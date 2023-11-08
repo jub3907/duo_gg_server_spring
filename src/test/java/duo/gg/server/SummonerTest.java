@@ -9,6 +9,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import static duo.gg.server.TestConstant.*;
@@ -25,7 +26,10 @@ public class SummonerTest {
     SummonerRepository repository;
 
     @Test
+    @Rollback(value = false)
     public void upsertSummoner() {
+        String name = "스트레스유발협곡";
+        String summonerId = "SRL_HuA_zVNrjtrC1KG7agCfgEH53gwqBc3OT5qWGKkA5Pc";
         //given
         service.upsertSummoner(name);
 
