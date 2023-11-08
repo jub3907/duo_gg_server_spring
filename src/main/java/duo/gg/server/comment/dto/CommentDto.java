@@ -1,6 +1,6 @@
 package duo.gg.server.comment.dto;
 
-import duo.gg.server.comment.Comment;
+import duo.gg.server.comment.entity.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

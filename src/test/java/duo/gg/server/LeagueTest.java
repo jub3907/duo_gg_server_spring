@@ -1,7 +1,6 @@
 package duo.gg.server;
 
 
-import duo.gg.server.constant.TierEnum;
 import duo.gg.server.league.LeagueRepository;
 import duo.gg.server.league.LeagueService;
 import duo.gg.server.league.dto.LeagueDto;
@@ -11,6 +10,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -28,6 +28,7 @@ public class LeagueTest {
     LeagueRepository repository;
 
     @Test
+    @Rollback(value = false)
     public void upsertRanking() {
         //given
         service.upsertRanking();
@@ -47,7 +48,7 @@ public class LeagueTest {
         service.upsertBySummonerId(TestConstant.summonerId);
 
         //when
-        List<LeagueDto> leaguesInfo = service.getLeaguesInfo(TestConstant.summonerId);
+        List<LeagueDto> leaguesInfo = service.getLeagueInfos(TestConstant.summonerId);
 
         //then
 

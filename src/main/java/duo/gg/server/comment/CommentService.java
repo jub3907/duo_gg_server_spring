@@ -3,6 +3,7 @@ package duo.gg.server.comment;
 import duo.gg.server.comment.dto.CommentDeleteForm;
 import duo.gg.server.comment.dto.CommentDto;
 import duo.gg.server.comment.dto.CommentForm;
+import duo.gg.server.comment.entity.Comment;
 import duo.gg.server.comment.error.CommentNotExist;
 import duo.gg.server.comment.error.PasswordNotMatch;
 import lombok.RequiredArgsConstructor;
@@ -41,8 +42,8 @@ public class CommentService {
         }
     }
 
-    public List<CommentDto> findByNamePaging(String name, Integer offset, Integer limit) {
-        List<Comment> comments = repository.findByNamePaging(name, offset, limit);
+    public List<CommentDto> findByPuuidPaging(String puuid, Integer offset, Integer limit) {
+        List<Comment> comments = repository.findByPuuidPaging(puuid, offset, limit);
         return comments.stream()
                 .map(CommentDto::new)
                 .collect(Collectors.toList());

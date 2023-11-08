@@ -42,11 +42,11 @@ public class CommentController {
 
     }
 
-    @GetMapping("/comment/{name}")
-    public List<CommentDto> getComments(@PathVariable String name,
+    @GetMapping("/comment/{puuid}")
+    public List<CommentDto> getComments(@PathVariable String puuid,
                                         @RequestParam Integer offset,
                                         @RequestParam Integer limit) {
-        return commentService.findByNamePaging(name, offset, limit);
+        return commentService.findByPuuidPaging(puuid, offset, limit);
     }
 
 }

@@ -1,4 +1,4 @@
-package duo.gg.server.comment;
+package duo.gg.server.comment.entity;
 
 import duo.gg.server.comment.dto.CommentForm;
 import jakarta.persistence.*;

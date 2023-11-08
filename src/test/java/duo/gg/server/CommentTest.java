@@ -1,12 +1,10 @@
 package duo.gg.server;
 
-import duo.gg.server.comment.Comment;
 import duo.gg.server.comment.CommentRepository;
 import duo.gg.server.comment.CommentService;
 import duo.gg.server.comment.dto.CommentDeleteForm;
 import duo.gg.server.comment.dto.CommentDto;
 import duo.gg.server.comment.dto.CommentForm;
-import duo.gg.server.constant.TierEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -46,12 +44,12 @@ public class CommentTest {
 
         //when
 
-        List<CommentDto> comments = service.findByNamePaging(name, 0, 5);
+        List<CommentDto> comments = service.findByPuuidPaging(name, 0, 5);
         CommentDeleteForm deleteForm = new CommentDeleteForm(password);
 
         service.delete(comments.get(0).getCommentId(), deleteForm);
 
-        List<CommentDto> commentsAfterDelete = service.findByNamePaging(name, 0, 5);
+        List<CommentDto> commentsAfterDelete = service.findByPuuidPaging(name, 0, 5);
 
 
         //then

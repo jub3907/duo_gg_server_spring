@@ -1,5 +1,6 @@
 package duo.gg.server.comment;
 
+import duo.gg.server.comment.entity.Comment;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,8 +27,9 @@ public class CommentRepository {
         em.remove(comment);
     }
 
-    public List<Comment> findByNamePaging(String name, Integer offset, Integer limit) {
-        return em.createQuery("select c from Comment c", Comment.class)
+    public List<Comment> findByPuuidPaging(String puuid, Integer offset, Integer limit) {
+        return em.createQuery("select c from Comment c where puuid = :puuid", Comment.class)
+                .setParameter("puuid", puuid)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
