@@ -23,12 +23,10 @@ public class MatchController {
     private final MatchRepository matchRepository;
 
     @Transactional
-    @PostMapping("/match/{name}")
-    public ResponseEntity<String> updateRecentMatches(@PathVariable String name,
+    @PostMapping("/match/{puuid}")
+    public ResponseEntity<String> updateRecentMatches(@PathVariable String puuid,
                                                       @RequestParam(required = false) Integer start,
                                                       @RequestParam(required = false) Integer count) {
-        String puuid = summonerService.getPuuidByName(name);
-
         List<String> recentMatchIds = matchService.getMatchIdsByPuuid(puuid, start, count);
 
         List<String> matchIdsNotInDb = matchService.getMatchIdsNotInDb(recentMatchIds);
@@ -38,12 +36,10 @@ public class MatchController {
         return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
-    @GetMapping("/match/{name}")
-    public List<MatchBasicDto> getRecentMatches(@PathVariable String name,
+    @GetMapping("/match/{puuid}")
+    public List<MatchBasicDto> getRecentMatches(@PathVariable String puuid,
                                                 @RequestParam(required = false) Integer start,
                                                 @RequestParam(required = false) Integer count) {
-
-        String puuid = summonerService.getPuuidByName(name);
         List<String> recentMatchIds = matchService.getMatchIdsByPuuid(puuid, start, count);
         List<MatchInfo> matches = matchRepository.findByIds(recentMatchIds);
 
@@ -52,8 +48,7 @@ public class MatchController {
 
     @GetMapping("/match/detail")
     public MatchDetailDto getMatchDetail(@RequestParam String matchId,
-                                         @RequestParam String name) {
-        String puuid = summonerService.getPuuidByName(name);
+                                         @RequestParam String puuid) {
         MatchInfo match = matchRepository.findById(matchId).get();
 
         return matchService.getMatchDetail(match, puuid);

@@ -3,10 +3,16 @@ package duo.gg.server.match.dto;
 import duo.gg.server.constant.TeamId;
 import duo.gg.server.match.entity.MatchInfo;
 import duo.gg.server.match.entity.Participant;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MatchBasicDto {
     private String matchId;
     // 플레이타임
@@ -53,6 +59,8 @@ public class MatchBasicDto {
     // CS
     private Integer totalMinionsKilled;
 
+    private Integer totalDamageDealtToChampions;
+
     private List<ParticipantBasicDto> blue = new ArrayList<>();
     private List<ParticipantBasicDto> red = new ArrayList<>();
 
@@ -96,6 +104,7 @@ public class MatchBasicDto {
                 summoner2Id = participant.getSummoner2Id();
                 goldEarned = participant.getGoldEarned();
                 totalMinionsKilled = participant.getTotalMinionsKilled();
+                totalDamageDealtToChampions = participant.getTotalDamageDealtToChampions();
 
                 isWin = participant.getWin();
             }
