@@ -6,10 +6,12 @@ import duo.gg.server.match.entity.Participant;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -80,9 +82,9 @@ public class MatchBasicDto {
 
         for (Participant participant : match.getParticipants()) {
             if (participant.getTeamId() == TeamId.BLUE) {
-                blue.add(new ParticipantBasicDto(participant.getRiotIdName(), participant.getChampionId(), participant.getPuuid()));
+                blue.add(new ParticipantBasicDto(participant.getSummonerName(), participant.getChampionId(), participant.getPuuid()));
             } else {
-                red.add(new ParticipantBasicDto(participant.getRiotIdName(), participant.getChampionId(), participant.getPuuid()));
+                red.add(new ParticipantBasicDto(participant.getSummonerName(), participant.getChampionId(), participant.getPuuid()));
             }
 
             if (participant.getPuuid().equals(puuid)) {

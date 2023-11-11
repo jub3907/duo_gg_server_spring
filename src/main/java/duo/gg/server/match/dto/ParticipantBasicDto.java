@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ParticipantBasicDto {
-    private String riotIdName;
+    private String summonerName;
     private Integer championId;
     private String puuid;
 }

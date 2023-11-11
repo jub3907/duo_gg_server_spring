@@ -4,6 +4,7 @@ import duo.gg.server.common.ResponseBody;
 import duo.gg.server.match.dto.MatchBasicDto;
 import duo.gg.server.match.dto.MatchDetailDto;
 import duo.gg.server.match.entity.MatchInfo;
+import duo.gg.server.match.entity.Participant;
 import duo.gg.server.summoner.SummonerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,10 +42,11 @@ public class MatchController {
                                                 @RequestParam(required = false) Integer start,
                                                 @RequestParam(required = false) Integer count) {
         List<String> recentMatchIds = matchService.getMatchIdsByPuuid(puuid, start, count);
-        List<MatchInfo> matches = matchRepository.findByIds(recentMatchIds);
+        List<MatchInfo> matches = matchRepository.findByMatchIds(recentMatchIds);
 
         return matchService.getMatchBasics(matches, puuid);
     }
+
 
     @GetMapping("/match/detail")
     public MatchDetailDto getMatchDetail(@RequestParam String matchId,

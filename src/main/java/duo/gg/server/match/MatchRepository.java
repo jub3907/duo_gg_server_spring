@@ -40,4 +40,14 @@ public class MatchRepository {
                 .toList()
                 .forEach(em::persist);
     }
+
+    public List<MatchInfo> findByMatchIds(List<String> matchIds) {
+        return em.createQuery("select m from MatchInfo m " +
+                        "join fetch m.participants " +
+                        "where m.id in :matchIds " +
+                        "order by m.gameCreation desc", MatchInfo.class)
+
+                .setParameter("matchIds", matchIds)
+                .getResultList();
+    }
 }
