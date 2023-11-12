@@ -12,7 +12,7 @@ public class ParticipantDetailDto {
     // 라인
     private String teamPosition;
     // 이름
-    private String riotIdName;
+    private String summonerName;
     private String puuid;
     // 티어
     //TODO: 티어 추가
@@ -38,6 +38,7 @@ public class ParticipantDetailDto {
     private Integer item5;
     private Integer item6;
 
+    private Boolean isWin;
     // 킬
     // 데스
     // 어시스트
@@ -53,6 +54,11 @@ public class ParticipantDetailDto {
     // 받은피해량
     private Integer totalDamageTaken;
 
+
+    private Integer baronKills;
+    private Integer dragonKills;
+    private Integer turretKills;
+
     // 시야 점수
     private Integer visionScore;
     // 와드 설치
@@ -61,7 +67,7 @@ public class ParticipantDetailDto {
 
     public ParticipantDetailDto(Participant participant) {
         teamPosition = participant.getTeamPosition();
-        riotIdName = participant.getRiotIdName();
+        summonerName = participant.getSummonerName();
         puuid = participant.getPuuid();
         teamId = participant.getTeamId();
         champLevel = participant.getChampLevel();
@@ -76,6 +82,13 @@ public class ParticipantDetailDto {
         item4 = participant.getItem4();
         item5 = participant.getItem5();
         item6 = participant.getItem6();
+
+        isWin = participant.getWin();
+
+        baronKills = participant.getBaronKills();
+        dragonKills = participant.getDragonKills();
+        turretKills = participant.getTurretKills();
+
         kills = participant.getKills();
         deaths = participant.getDeaths();
         assists = participant.getAssists();
@@ -83,6 +96,7 @@ public class ParticipantDetailDto {
         goldEarned = participant.getGoldEarned();
         totalDamageDealtToChampions = participant.getTotalDamageDealtToChampions();
         totalDamageTaken = participant.getTotalDamageTaken();
+
         visionScore = participant.getVisionScore();
         wardsPlaced = participant.getWardsPlaced();
         detectorWardsPlaced = participant.getDetectorWardsPlaced();

@@ -7,23 +7,27 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class MatchDetailDto {
+    private String matchId;
+
     // 전체 플레이 시간
     private Long gameCreation;
     private Long gameDuration;
     private Integer winner;
 
-    private List<ParticipantDetailDto> blue;
-    private List<ParticipantDetailDto> red;
+    private List<ParticipantDetailDto> blue = new ArrayList<>();
+    private List<ParticipantDetailDto> red = new ArrayList<>();
 
     private PerkDto perk;
 
     public MatchDetailDto(MatchInfo match, String puuid) {
+        matchId = match.getId();
         gameCreation = match.getGameCreation();
         gameDuration = match.getGameDuration();
         if (match.getParticipants().get(0).getWin()) {
