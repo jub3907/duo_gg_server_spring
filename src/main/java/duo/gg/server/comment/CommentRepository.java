@@ -28,7 +28,7 @@ public class CommentRepository {
     }
 
     public List<Comment> findByPuuidPaging(String puuid, Integer offset, Integer limit) {
-        return em.createQuery("select c from Comment c where puuid = :puuid", Comment.class)
+        return em.createQuery("select c from Comment c where puuid = :puuid order by c.createdDate desc", Comment.class)
                 .setParameter("puuid", puuid)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
