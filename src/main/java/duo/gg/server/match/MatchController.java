@@ -4,7 +4,6 @@ import duo.gg.server.common.ResponseBody;
 import duo.gg.server.match.dto.MatchBasicDto;
 import duo.gg.server.match.dto.MatchDetailDto;
 import duo.gg.server.match.entity.MatchInfo;
-import duo.gg.server.match.entity.Participant;
 import duo.gg.server.summoner.SummonerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

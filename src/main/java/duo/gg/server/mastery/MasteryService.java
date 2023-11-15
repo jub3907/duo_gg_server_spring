@@ -2,7 +2,6 @@ package duo.gg.server.mastery;
 
 import duo.gg.server.api.dto.mastery.MasteryApiResult;
 import duo.gg.server.api.service.ApiService;
-import duo.gg.server.common.Result;
 import duo.gg.server.mastery.dto.MasteryDto;
 import duo.gg.server.summoner.SummonerService;
 import lombok.RequiredArgsConstructor;

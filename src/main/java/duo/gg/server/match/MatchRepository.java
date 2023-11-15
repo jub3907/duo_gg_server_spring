@@ -2,7 +2,6 @@ package duo.gg.server.match;
 
 import duo.gg.server.api.dto.match.MatchApiResult;
 import duo.gg.server.match.entity.MatchInfo;
-import duo.gg.server.match.entity.Participant;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

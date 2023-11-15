@@ -3,15 +3,11 @@ package duo.gg.server.summoner;
 import duo.gg.server.api.dto.summoner.SummonerApiResult;
 import duo.gg.server.api.service.ApiService;
 import duo.gg.server.comment.error.NoSummonerInfo;
-import duo.gg.server.league.LeagueRepository;
-import duo.gg.server.league.dto.RankingDto;
 import duo.gg.server.summoner.dto.SummonerDto;
 import duo.gg.server.summoner.entity.Summoner;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j

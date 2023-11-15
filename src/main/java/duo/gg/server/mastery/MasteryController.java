@@ -1,7 +1,6 @@
 package duo.gg.server.mastery;
 
 import duo.gg.server.common.ResponseBody;
-import duo.gg.server.common.Result;
 import duo.gg.server.mastery.dto.MasteryDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

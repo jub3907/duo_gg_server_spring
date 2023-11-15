@@ -4,7 +4,6 @@ import duo.gg.server.summoner.entity.Summoner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Getter
 @NoArgsConstructor

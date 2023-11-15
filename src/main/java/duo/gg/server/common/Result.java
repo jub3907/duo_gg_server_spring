@@ -1,6 +1,5 @@
 package duo.gg.server.common;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.List;
