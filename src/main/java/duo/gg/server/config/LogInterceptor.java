@@ -29,7 +29,7 @@ public class LogInterceptor implements HandlerInterceptor {
             HandlerMethod hm = (HandlerMethod) handler;
         }
 
-        log.info("REQUEST [{}][{}][{}]", uuid, requestURI, handler);
+        log.info("REQUEST START [{}][{}][{}]", uuid, requestURI, handler);
 
         return true;
     }
@@ -39,7 +39,7 @@ public class LogInterceptor implements HandlerInterceptor {
         String requestURI = request.getRequestURI();
         Object uuid = request.getAttribute(LOG_ID);
 
-        log.info("REQUEST [{}][{}][{}]", uuid, requestURI, handler);
+        log.info("REQUEST END [{}][{}][{}]", uuid, requestURI, handler);
 
         if (ex != null) {
             log.error("afterCompletion Error!", ex);
