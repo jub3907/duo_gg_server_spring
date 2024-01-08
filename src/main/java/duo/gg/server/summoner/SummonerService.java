@@ -18,7 +18,7 @@ public class SummonerService {
     private final ApiService apiService;
     private final SummonerRepository summonerRepository;
 
-    public void upsertSummoner(String name) {
+    public void upsertSummonerByName(String name) {
 
         SummonerApiResult summonerApiResult = apiService.getSummonerBySummonerName(name);
 
@@ -55,6 +55,37 @@ public class SummonerService {
 
     public SummonerDto getSummonerByName(String name) {
         Optional<Summoner> findSummoner = summonerRepository.findByName(name);
+        return findSummoner.map(SummonerDto::new).orElseThrow(NoSummonerInfo::new);
+    }
+
+
+    public void upsertSummonerByPuuid(String puuid) {
+
+        SummonerApiResult summonerApiResult = apiService.getSummonerByPuuid(puuid);
+
+        Optional<Summoner> findSummoner = summonerRepository.findById(summonerApiResult.getId());
+
+        if (findSummoner.isEmpty()) {
+            Summoner summoner = new Summoner(summonerApiResult);
+            summonerRepository.save(summoner);
+        } else {
+            findSummoner.get()
+                    .updateByApiResult(summonerApiResult);
+        }
+    }
+
+    public String getSummonerIdByPuuid(String puuid) {
+        Optional<Summoner> findSummoner = summonerRepository.findByPuuid(puuid);
+
+        if (findSummoner.isEmpty()) {
+            return apiService.getSummonerBySummonerName(puuid).getId();
+        } else {
+            return findSummoner.get().getId();
+        }
+    }
+
+    public SummonerDto getSummonerByPuuid(String puuid) {
+        Optional<Summoner> findSummoner = summonerRepository.findByName(puuid);
         return findSummoner.map(SummonerDto::new).orElseThrow(NoSummonerInfo::new);
     }
 }

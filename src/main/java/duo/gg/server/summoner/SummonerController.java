@@ -23,12 +23,24 @@ public class SummonerController {
     @Transactional
     @PostMapping("/summoner/{name}")
     public ResponseEntity<String> upsertByName(@PathVariable String name) {
-        service.upsertSummoner(name);
+        service.upsertSummonerByName(name);
         return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
     @GetMapping("/summoner/{name}")
     public SummonerDto findByName(@PathVariable String name) {
         return service.getSummonerByName(name);
+    }
+
+    @Transactional
+    @PostMapping("/summoner/{puuid}")
+    public ResponseEntity<String> upsertByPuuid(@PathVariable String puuid) {
+        service.upsertSummonerByPuuid(puuid);
+        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
+    }
+
+    @GetMapping("/summoner/{puuid}")
+    public SummonerDto findByPuuid(@PathVariable String puuid) {
+        return service.getSummonerByPuuid(puuid);
     }
 }
