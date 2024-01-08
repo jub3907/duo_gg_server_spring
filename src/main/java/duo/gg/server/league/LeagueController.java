@@ -23,33 +23,33 @@ public class LeagueController {
     private final SummonerService summonerService;
     private final LeagueRepository leagueRepository;
 
+    @GetMapping("/ranking")
+    public List<RankingDto> ranking(@RequestParam Integer offset, @RequestParam Integer limit) {
+        return leagueService.getRanking(offset, limit);
+    }
+
     @Transactional
-    @PostMapping("/league/{name}")
+    @PostMapping("/league/by-name/{name}")
     public ResponseEntity<String> upsertByName(@PathVariable String name) {
         String summonerId = summonerService.getSummonerIdByName(name);
         leagueService.upsertBySummonerId(summonerId);
         return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
-    @GetMapping("/ranking")
-    public List<RankingDto> ranking(@RequestParam Integer offset, @RequestParam Integer limit) {
-        return leagueService.getRanking(offset, limit);
-    }
-
-    @GetMapping("/league/{name}")
-    public List<LeagueDto> getLeagueInfos(@PathVariable String name) {
+    @GetMapping("/league/by-name/{name}")
+    public List<LeagueDto> getLeagueInfosByName(@PathVariable String name) {
         String summonerId = summonerService.getSummonerIdByName(name);
         return leagueService.getLeagueInfos(summonerId);
     }
 
-    @GetMapping("/league/{name}/solo")
-    public LeagueDto getSoloLeagueInfo(@PathVariable String name) {
+    @GetMapping("/league/by-name/{name}/solo")
+    public LeagueDto getSoloLeagueInfoByName(@PathVariable String name) {
         String summonerId = summonerService.getSummonerIdByName(name);
         return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_SOLO_5x5);
     }
 
-    @GetMapping("/league/{name}/free")
-    public LeagueDto getFreeLeagueInfo(@PathVariable String name) {
+    @GetMapping("/league/by-name/{name}/free")
+    public LeagueDto getFreeLeagueInfoByName(@PathVariable String name) {
         String summonerId = summonerService.getSummonerIdByName(name);
         return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_FLEX_SR);
     }
