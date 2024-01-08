@@ -54,4 +54,30 @@ public class LeagueController {
         return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_FLEX_SR);
     }
 
+    @Transactional
+    @PostMapping("/league/by-puuid/{puuid}")
+    public ResponseEntity<String> upsertByPuuid(@PathVariable String puuid) {
+        String summonerId = summonerService.getSummonerIdByPuuid(puuid);
+        leagueService.upsertBySummonerId(summonerId);
+        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
+    }
+
+    @GetMapping("/league/by-puuid/{puuid}")
+    public List<LeagueDto> getLeagueInfosByPuuid(@PathVariable String puuid) {
+        String summonerId = summonerService.getSummonerIdByPuuid(puuid);
+        return leagueService.getLeagueInfos(summonerId);
+    }
+
+
+    @GetMapping("/league/by-puuid/{puuid}/solo")
+    public LeagueDto getSoloLeagueInfoByPuuid(@PathVariable String puuid) {
+        String summonerId = summonerService.getSummonerIdByPuuid(puuid);
+        return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_SOLO_5x5);
+    }
+
+    @GetMapping("/league/by-puuid/{puuid}/free")
+    public LeagueDto getFreeLeagueInfoByPuuid(@PathVariable String puuid) {
+        String summonerId = summonerService.getSummonerIdByPuuid(puuid);
+        return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_FLEX_SR);
+    }
 }
