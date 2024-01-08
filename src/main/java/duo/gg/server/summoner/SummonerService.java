@@ -25,6 +25,7 @@ public class SummonerService {
         Optional<Summoner> findSummoner = summonerRepository.findById(summonerApiResult.getId());
 
         if (findSummoner.isEmpty()) {
+            log.info("Error: summoner not found, {}", name);
             Summoner summoner = new Summoner(summonerApiResult);
             summonerRepository.save(summoner);
         } else {
@@ -37,6 +38,7 @@ public class SummonerService {
         Optional<Summoner> findSummoner = summonerRepository.findByName(name);
 
         if (findSummoner.isEmpty()) {
+            log.info("Error: summoner not found, {}", name);
             return apiService.getSummonerBySummonerName(name).getPuuid();
         } else {
             return findSummoner.get().getPuuid();
@@ -47,6 +49,7 @@ public class SummonerService {
         Optional<Summoner> findSummoner = summonerRepository.findByName(name);
 
         if (findSummoner.isEmpty()) {
+            log.info("Error: summoner not found, {}", name);
             return apiService.getSummonerBySummonerName(name).getId();
         } else {
             return findSummoner.get().getId();
@@ -66,6 +69,7 @@ public class SummonerService {
         Optional<Summoner> findSummoner = summonerRepository.findById(summonerApiResult.getId());
 
         if (findSummoner.isEmpty()) {
+            log.info("Error: summoner not found, {}", puuid);
             Summoner summoner = new Summoner(summonerApiResult);
             summonerRepository.save(summoner);
         } else {
@@ -78,6 +82,7 @@ public class SummonerService {
         Optional<Summoner> findSummoner = summonerRepository.findByPuuid(puuid);
 
         if (findSummoner.isEmpty()) {
+            log.info("Error: summoner not found, {}", puuid);
             return apiService.getSummonerBySummonerName(puuid).getId();
         } else {
             return findSummoner.get().getId();
