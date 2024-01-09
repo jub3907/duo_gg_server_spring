@@ -90,7 +90,7 @@ public class SummonerService {
     }
 
     public SummonerDto getSummonerByPuuid(String puuid) {
-        Optional<Summoner> findSummoner = summonerRepository.findByName(puuid);
+        Optional<Summoner> findSummoner = summonerRepository.findByPuuid(puuid);
         return findSummoner.map(SummonerDto::new).orElseThrow(NoSummonerInfo::new);
     }
 }
