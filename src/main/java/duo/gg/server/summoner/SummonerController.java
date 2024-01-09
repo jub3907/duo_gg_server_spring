@@ -20,17 +20,17 @@ public class SummonerController {
     private final SummonerService service;
     private final SummonerRepository repository;
 
-    @Transactional
-    @PostMapping("/summoner/{name}")
-    public ResponseEntity<String> upsertByName(@PathVariable String name) {
-        service.upsertSummonerByName(name);
-        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
-    }
-
-    @GetMapping("/summoner/{name}")
-    public SummonerDto findByName(@PathVariable String name) {
-        return service.getSummonerByName(name);
-    }
+//    @Transactional
+//    @PostMapping("/summoner/{name}")
+//    public ResponseEntity<String> upsertByName(@PathVariable String name) {
+//        service.upsertSummonerByName(name);
+//        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/summoner/{name}")
+//    public SummonerDto findByName(@PathVariable String name) {
+//        return service.getSummonerByName(name);
+//    }
 
     @Transactional
     @PostMapping("/summoner/{puuid}")
