@@ -41,7 +41,7 @@ public class LeagueRepository {
     public List<RankingDto> findRanking(Integer offset, Integer limit) {
         List resultList = em.createQuery(
                         "select l, s " +
-                                "from League l left join Summoner s on l.summonerName = s.name " +
+                                "from League l left join Summoner s on l.summonerId = s.accountId " +
                                 "order by l.leaguePoints desc")
                 .setFirstResult(offset)
                 .setMaxResults(limit)
