@@ -1,18 +1,15 @@
 package duo.gg.server;
 
-import duo.gg.server.constant.TierEnum;
 import duo.gg.server.summoner.SummonerRepository;
 import duo.gg.server.summoner.SummonerService;
 import duo.gg.server.summoner.dto.SummonerDto;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import static duo.gg.server.TestConstant.*;
 import static org.assertj.core.api.Assertions.*;
 
 @Slf4j
@@ -31,12 +28,24 @@ public class SummonerTest {
         String name = "스트레스유발협곡";
         String summonerId = "SRL_HuA_zVNrjtrC1KG7agCfgEH53gwqBc3OT5qWGKkA5Pc";
         //given
-        service.upsertSummoner(name);
+        service.upsertSummonerByName(name);
 
         //when
         SummonerDto summoner = service.getSummonerByName(name);
 
         //then
         assertThat(summoner.getSummonerId()).isEqualTo(summonerId);
+    }
+
+    @Test
+    public void upsertSummonerByPuuid() {
+        String name = "Radiohead";
+        String tagLine = "KR1";
+        String puuid = "qgTVX3hVfRwxEfMUB_tGNN3rzTjPcy8GeRxlIsZw-vwJBFhKwXTYQLM1Zl10lgaXq2NODmkOO_TkAQ";
+
+        service.upsertSummonerByPuuid(puuid);
+        SummonerDto summoner = service.getSummonerByPuuid(puuid);
+        assertThat(summoner.getName()).isEqualTo(name);
+
     }
 }
