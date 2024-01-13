@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ParticipantBasicDto {
     private String summonerName;
+    private String summonerTag;
     private Integer championId;
     private String puuid;
 }
