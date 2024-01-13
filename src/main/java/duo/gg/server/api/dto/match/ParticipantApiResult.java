@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class ParticipantApiResult {
     // 플레이어, 참여자 정보
     private String puuid;
-    private String riotIdName;
+    private String riotIdGameName;
     private String riotIdTagline;
     private Integer profileIcon;
 

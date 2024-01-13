@@ -26,7 +26,7 @@ public class Participant {
 
     // 플레이어, 참여자 정보
     private String puuid;
-    private String riotIdName;
+    private String riotIdGameName;
     private String riotIdTagline;
     private Integer profileIcon;
 
@@ -181,7 +181,7 @@ public class Participant {
 
         perks = new Perk(result.getPerks());
         puuid = result.getPuuid();
-        riotIdName = result.getRiotIdName();
+        riotIdGameName = result.getRiotIdGameName();
         riotIdTagline = result.getRiotIdTagline();
         profileIcon = result.getProfileIcon();
 

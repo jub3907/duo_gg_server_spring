@@ -82,9 +82,9 @@ public class MatchBasicDto {
 
         for (Participant participant : match.getParticipants()) {
             if (participant.getTeamId() == TeamId.BLUE) {
-                blue.add(new ParticipantBasicDto(participant.getSummonerName(), participant.getRiotIdTagline(), participant.getChampionId(), participant.getPuuid()));
+                blue.add(new ParticipantBasicDto(participant.getRiotIdGameName(), participant.getRiotIdTagline(), participant.getChampionId(), participant.getPuuid()));
             } else {
-                red.add(new ParticipantBasicDto(participant.getSummonerName(), participant.getRiotIdTagline(), participant.getChampionId(), participant.getPuuid()));
+                red.add(new ParticipantBasicDto(participant.getRiotIdGameName(), participant.getRiotIdTagline(), participant.getChampionId(), participant.getPuuid()));
             }
 
             if (participant.getPuuid().equals(puuid)) {
