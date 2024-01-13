@@ -27,32 +27,32 @@ public class MasteryController {
         return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
-    @Transactional
-    @PostMapping("/mastery/by-summoner/{summonerId}")
-    public ResponseEntity<String> upsertBySummonerId(@PathVariable String summonerId) {
-        service.upsertMasteriesBySummonerId(summonerId);
-        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
-    }
+//    @Transactional
+//    @PostMapping("/mastery/by-summoner/{summonerId}")
+//    public ResponseEntity<String> upsertBySummonerId(@PathVariable String summonerId) {
+//        service.upsertMasteriesBySummonerId(summonerId);
+//        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
+//    }
 
-    @Transactional
-    @PostMapping("/mastery/by-name/{name}")
-    public ResponseEntity<String> upsertByName(@PathVariable String name) {
-        service.upsertMasteriesByName(name);
-        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
-    }
+//    @Transactional
+//    @PostMapping("/mastery/by-name/{name}")
+//    public ResponseEntity<String> upsertByName(@PathVariable String name) {
+//        service.upsertMasteriesByName(name);
+//        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
+//    }
 
     @GetMapping("/mastery/by-puuid/{puuid}")
     public List<MasteryDto> getByPuuid(@PathVariable String puuid, @RequestParam(required = false) Integer limit) {
         return service.findMasteriesByPuuid(puuid, limit);
     }
 
-    @GetMapping("/mastery/by-summoner/{summonerId}")
-    public List<MasteryDto> getBySummonerId(@PathVariable String summonerId, @RequestParam(required = false) Integer limit) {
-        return service.findMasteriesBySummonerId(summonerId, limit);
-    }
-
-    @GetMapping("/mastery/by-name/{name}")
-    public List<MasteryDto> getByName(@PathVariable String name, @RequestParam(required = false) Integer limit) {
-        return service.findMasteriesByName(name, limit);
-    }
+//    @GetMapping("/mastery/by-summoner/{summonerId}")
+//    public List<MasteryDto> getBySummonerId(@PathVariable String summonerId, @RequestParam(required = false) Integer limit) {
+//        return service.findMasteriesBySummonerId(summonerId, limit);
+//    }
+//
+//    @GetMapping("/mastery/by-name/{name}")
+//    public List<MasteryDto> getByName(@PathVariable String name, @RequestParam(required = false) Integer limit) {
+//        return service.findMasteriesByName(name, limit);
+//    }
 }
