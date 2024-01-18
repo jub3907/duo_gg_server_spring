@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 public class RankingDto {
     private Integer profileIconId;
     private String summonerName;
+    private String summonerId;
+
+    private String puuid;
     private String tier;
     private Integer leaguePoints;
     private Long summonerLevel;
@@ -22,12 +25,13 @@ public class RankingDto {
         if (s != null) {
             this.profileIconId = s.getProfileIconId();
             this.summonerLevel = s.getSummonerLevel();
+            this.puuid = s.getPuuid();
         }
         this.summonerName = l.getSummonerName();
         this.tier = l.getTier().toString();
         this.leaguePoints = l.getLeaguePoints();
         this.wins = l.getWins();
         this.losses = l.getLosses();
-
+        this.summonerId = l.getSummonerId();
     }
 }
