@@ -33,14 +33,27 @@ public class SummonerController {
 //    }
 
     @Transactional
-    @PostMapping("/summoner/{puuid}")
+    @PostMapping("/summoner/by-puuid/{puuid}")
     public ResponseEntity<String> upsertByPuuid(@PathVariable String puuid) {
         service.upsertSummonerByPuuid(puuid);
         return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
-    @GetMapping("/summoner/{puuid}")
+    @GetMapping("/summoner/by-puuid/{puuid}")
     public SummonerDto findByPuuid(@PathVariable String puuid) {
         return service.getSummonerByPuuid(puuid);
+    }
+
+
+    @Transactional
+    @PostMapping("/summoner/by-id/{summonerId}")
+    public ResponseEntity<String> upsertBySummonerId(@PathVariable String summonerId) {
+        service.upsertSummonerBySummonerId(summonerId);
+        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
+    }
+
+    @GetMapping("/summoner/by-id/{summonerId}")
+    public SummonerDto findBySummonerId(@PathVariable String summonerId) {
+        return service.getSummonerBySummonerId(summonerId);
     }
 }
