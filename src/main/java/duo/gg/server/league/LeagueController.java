@@ -27,55 +27,29 @@ public class LeagueController {
     public List<RankingDto> ranking(@RequestParam Integer offset, @RequestParam Integer limit) {
         return leagueService.getRanking(offset, limit);
     }
-//
-//    @Transactional
-//    @PostMapping("/league/by-name/{name}")
-//    public ResponseEntity<String> upsertByName(@PathVariable String name) {
-//        String summonerId = summonerService.getSummonerIdByName(name);
-//        leagueService.upsertBySummonerId(summonerId);
-//        return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/league/by-name/{name}")
-//    public List<LeagueDto> getLeagueInfosByName(@PathVariable String name) {
-//        String summonerId = summonerService.getSummonerIdByName(name);
-//        return leagueService.getLeagueInfos(summonerId);
-//    }
-//
-//    @GetMapping("/league/by-name/{name}/solo")
-//    public LeagueDto getSoloLeagueInfoByName(@PathVariable String name) {
-//        String summonerId = summonerService.getSummonerIdByName(name);
-//        return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_SOLO_5x5);
-//    }
-//
-//    @GetMapping("/league/by-name/{name}/free")
-//    public LeagueDto getFreeLeagueInfoByName(@PathVariable String name) {
-//        String summonerId = summonerService.getSummonerIdByName(name);
-//        return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_FLEX_SR);
-//    }
 
     @Transactional
-    @PostMapping("/league/by-puuid/{puuid}")
+    @PostMapping("/league/{puuid}")
     public ResponseEntity<String> upsertByPuuid(@PathVariable String puuid) {
         String summonerId = summonerService.getSummonerIdByPuuid(puuid);
         leagueService.upsertBySummonerId(summonerId);
         return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
 
-    @GetMapping("/league/by-puuid/{puuid}")
+    @GetMapping("/league/{puuid}")
     public List<LeagueDto> getLeagueInfosByPuuid(@PathVariable String puuid) {
         String summonerId = summonerService.getSummonerIdByPuuid(puuid);
         return leagueService.getLeagueInfos(summonerId);
     }
 
 
-    @GetMapping("/league/by-puuid/{puuid}/solo")
+    @GetMapping("/league/{puuid}/solo")
     public LeagueDto getSoloLeagueInfoByPuuid(@PathVariable String puuid) {
         String summonerId = summonerService.getSummonerIdByPuuid(puuid);
         return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_SOLO_5x5);
     }
 
-    @GetMapping("/league/by-puuid/{puuid}/free")
+    @GetMapping("/league/{puuid}/free")
     public LeagueDto getFreeLeagueInfoByPuuid(@PathVariable String puuid) {
         String summonerId = summonerService.getSummonerIdByPuuid(puuid);
         return leagueService.getLeagueInfo(summonerId, QueueEnum.RANKED_FLEX_SR);
