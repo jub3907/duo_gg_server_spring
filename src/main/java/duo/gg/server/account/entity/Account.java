@@ -37,5 +37,6 @@ public class Account {
     public void updateByApiResult(AccountApiResult apiResult) {
         this.gameName = apiResult.getGameName();
         this.tagLine = apiResult.getTagLine();
+        this.puuid = apiResult.getPuuid();
     }
 }
