@@ -16,8 +16,8 @@ public class LeagueScheduler {
     @Transactional
     @Scheduled(initialDelay = 1000, fixedDelay = 300000)
     public void updateRanking() {
-        log.info("ranking updated");
         service.upsertRanking();
+        log.info("ranking updated");
     }
 
 }

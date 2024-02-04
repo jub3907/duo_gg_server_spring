@@ -32,12 +32,12 @@ public class LeagueService {
         String tier = result.getTier();
         String queueType = result.getQueue();
 
-        List<LeagueItemApiResult> top20 = result.getEntries()
+        List<LeagueItemApiResult> top10 = result.getEntries()
                 .stream()
                 .sorted(Comparator.comparing(LeagueItemApiResult::getLeaguePoints).reversed())
-                .limit(20).toList();
+                .limit(10).toList();
 
-        for (LeagueItemApiResult entry : top20) {
+        for (LeagueItemApiResult entry : top10) {
             String summonerId = entry.getSummonerId();
             Optional<League> findLeague = repository.findBySummonerIdAndQueueType(summonerId, QueueEnum.valueOf(queueType));
 
