@@ -21,12 +21,6 @@ public class LeagueController {
 
     private final LeagueService leagueService;
     private final SummonerService summonerService;
-    private final LeagueRepository leagueRepository;
-
-    @GetMapping("/ranking")
-    public List<RankingDto> ranking(@RequestParam Integer offset, @RequestParam Integer limit) {
-        return leagueService.getRanking(offset, limit);
-    }
 
     @Transactional
     @PostMapping("/league/{puuid}")

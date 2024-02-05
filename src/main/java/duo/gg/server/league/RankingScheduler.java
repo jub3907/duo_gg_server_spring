@@ -9,12 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class LeagueScheduler {
+public class RankingScheduler {
 
-    private final LeagueService service;
+    private final RankingService service;
 
     @Transactional
-    @Scheduled(initialDelay = 1000, fixedDelay = 300000)
+    @Scheduled(initialDelay = 1000, fixedDelay = 600000)
     public void updateRanking() {
         service.upsertRanking();
         log.info("ranking updated");

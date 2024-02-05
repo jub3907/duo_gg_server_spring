@@ -1,5 +1,6 @@
 package duo.gg.server.league;
 
+import duo.gg.server.account.entity.Account;
 import duo.gg.server.api.dto.league.LeagueEntryApiResult;
 import duo.gg.server.api.dto.league.LeagueItemApiResult;
 import duo.gg.server.constant.QueueEnum;
@@ -40,9 +41,10 @@ public class LeagueRepository {
 
     public List<RankingDto> findRanking(Integer offset, Integer limit) {
         List resultList = em.createQuery(
-                        "select l, s " +
-                                "from League l left join Summoner s on l.summonerId = s.accountId " +
-                                "order by l.leaguePoints desc")
+                        "select l, s, a from League l " +
+                        "left join Summoner s on l.summonerId = s.id " +
+                        "left join Account a on s.puuid = a.puuid " +
+                        "order by l.leaguePoints desc")
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
@@ -55,8 +57,9 @@ public class LeagueRepository {
             Object[] obj = (Object[]) itr.next();
             League league = (League) obj[0];
             Summoner summoner = (Summoner) obj[1];
+            Account account = (Account) obj[2];
 
-            result.add(new RankingDto(league, summoner));
+            result.add(new RankingDto(league, summoner, account));
         }
 
         return result;
