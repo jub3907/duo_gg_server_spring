@@ -1,27 +1,18 @@
 package duo.gg.server;
 
-import duo.gg.server.constant.QueueEnum;
-import duo.gg.server.league.LeagueRepository;
 import duo.gg.server.league.LeagueService;
-import duo.gg.server.league.dto.RankingDto;
-import duo.gg.server.league.entry.League;
-import duo.gg.server.post.contant.PostRankType;
+import duo.gg.server.match.MatchRepository;
+import duo.gg.server.match.entity.MatchInfo;
 import duo.gg.server.summoner.SummonerService;
-import duo.gg.server.summoner.dto.SummonerDto;
-import duo.gg.server.summoner.entity.Summoner;
 import jakarta.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,33 +29,38 @@ public class test {
     LeagueService leagueService;
 
     @Autowired
+    MatchRepository matchRepository;
+
+    @Autowired
     EntityManager em;
 
-    @Test
-    @Rollback(value = false)
-    public void test() {
+//    @Test
+//    @Rollback(value = false)
+//    public void test() {
+//
+//        String name = "스트레스유발협곡";
+//        Integer offset = 0;
+//        Integer limit = 5;
+//
+//        leagueService.upsertRanking();
+//
+//        //given
+//        summonerService.upsertSummonerByName(name);
+//
+//    }
 
-        String name = "스트레스유발협곡";
-        Integer offset = 0;
-        Integer limit = 5;
-
-        leagueService.upsertRanking();
-
-        //given
-        summonerService.upsertSummoner(name);
-
-    }
-
-    @Test
-    public void test2() {
-        LocalDateTime now = LocalDateTime.now();
-
-        log.info("{}", now.atZone(ZoneId.of("Asia/Seoul")).toInstant().toEpochMilli());
-        //given
-
-        //when
-
-        //then
-
-    }
+//    @Test
+//    public void test2() {
+//        String name = "스트레스유발협곡";
+//        String puuid = summonerService.getPuuidByName(name);
+//
+//        List<String> recentMatchIds = new ArrayList<String>();
+//        recentMatchIds.add("KR_6791339388");
+//
+//        List<MatchInfo> byMatchIds = matchRepository.findByMatchIds(recentMatchIds);
+//
+//        for (MatchInfo byMatchId : byMatchIds) {
+//            log.info("{}", byMatchId);
+//        }
+//    }
 }

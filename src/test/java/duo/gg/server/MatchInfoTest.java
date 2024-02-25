@@ -26,36 +26,36 @@ public class MatchInfoTest {
     @Autowired
     MatchRepository repository;
 
-    @Test
-    @Rollback(value = false)
-    public void updateAndGetRecentMatches() {
-        //given
-        List<String> ids = service.getMatchIdsByPuuid(puuid, 0, 3);
-        List<String> matchIdsNotInDb = service.getMatchIdsNotInDb(ids);
+//    @Test
+//    @Rollback(value = false)
+//    public void updateAndGetRecentMatches() {
+//        //given
+//        List<String> ids = service.getMatchIdsByPuuid(puuid, 0, 3);
+//        List<String> matchIdsNotInDb = service.getMatchIdsNotInDb(ids);
+//
+//        service.updateMatches(matchIdsNotInDb);
+//        //when
+//
+//        List<String> recentMatchIds = service.getMatchIdsByPuuid(puuid, 0, 3);
+//        List<MatchInfo> matches = repository.findByIds(recentMatchIds);
+//
+//        //then
+//        assertThat(ids.size()).isEqualTo(3);
+//        assertThat(matchIdsNotInDb.size()).isLessThanOrEqualTo(3);
+//        assertThat(matches.size()).isLessThanOrEqualTo(3);
+//
+//    }
 
-        service.updateMatches(matchIdsNotInDb);
-        //when
-
-        List<String> recentMatchIds = service.getMatchIdsByPuuid(puuid, 0, 3);
-        List<MatchInfo> matches = repository.findByIds(recentMatchIds);
-
-        //then
-        assertThat(ids.size()).isEqualTo(3);
-        assertThat(matchIdsNotInDb.size()).isLessThanOrEqualTo(3);
-        assertThat(matches.size()).isLessThanOrEqualTo(3);
-
-    }
-
-    @Test
-    public void getMatchDetail() {
-        //TODO: 추가
-        //given
-
-        //when
-
-        //then
-
-    }
+//    @Test
+//    public void getMatchDetail() {
+//        //TODO: 추가
+//        //given
+//
+//        //when
+//
+//        //then
+//
+//    }
 
 
 

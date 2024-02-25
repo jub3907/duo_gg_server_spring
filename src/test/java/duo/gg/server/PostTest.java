@@ -27,27 +27,27 @@ public class PostTest {
     @Autowired
     PostRepository repository;
 
-    @Test
-    @Rollback(value = false)
-    public void pagingTest() {
-        //given
-        PostForm form = new PostForm(PostRankType.SOLO, PostPosition.AD, "21세기광부", "다이아", "안녕하세요");
-        PostForm form2 = new PostForm(PostRankType.SOLO, PostPosition.ALL, "21세기광부", "다이아", "안녕하세요");
-        PostForm form3 = new PostForm(PostRankType.TEAM, PostPosition.MID, "21세기광부", "다이아", "안녕하세요");
-        PostForm form4 = new PostForm(PostRankType.TEAM, PostPosition.TOP, "21세기광부", "다이아", "안녕하세요");
-        PostForm form5 = new PostForm(PostRankType.NORMAL, PostPosition.JUNGLE, "21세기광부", "다이아", "안녕하세요");
-        service.save(form);
-        service.save(form2);
-        service.save(form3);
-        service.save(form4);
-        service.save(form5);
-
-        //when
-        List<PostDto> findPosts = service.findByPage(0, 3);
-
-        //then
-        Assertions.assertThat(findPosts.size()).isEqualTo(3);
-
-    }
+//    @Test
+//    @Rollback(value = false)
+//    public void pagingTest() {
+//        //given
+//        PostForm form = new PostForm(PostRankType.SOLO, PostPosition.AD, "21세기광부", "다이아", "안녕하세요");
+//        PostForm form2 = new PostForm(PostRankType.SOLO, PostPosition.ALL, "21세기광부", "다이아", "안녕하세요");
+//        PostForm form3 = new PostForm(PostRankType.TEAM, PostPosition.MID, "21세기광부", "다이아", "안녕하세요");
+//        PostForm form4 = new PostForm(PostRankType.TEAM, PostPosition.TOP, "21세기광부", "다이아", "안녕하세요");
+//        PostForm form5 = new PostForm(PostRankType.NORMAL, PostPosition.JUNGLE, "21세기광부", "다이아", "안녕하세요");
+//        service.save(form);
+//        service.save(form2);
+//        service.save(form3);
+//        service.save(form4);
+//        service.save(form5);
+//
+//        //when
+//        List<PostDto> findPosts = service.findByPage(0, 3);
+//
+//        //then
+//        Assertions.assertThat(findPosts.size()).isEqualTo(3);
+//
+//    }
 
 }

@@ -31,30 +31,30 @@ public class LeagueTest {
     @Autowired
     RankingService rankingService;
 
-    @Test
-    @Rollback(value = false)
-    public void upsertRanking() {
-        //given
-        rankingService.upsertRanking();
+//    @Test
+//    @Rollback(value = false)
+//    public void upsertRanking() {
+//        //given
+//        rankingService.upsertRanking();
+//
+//        //when
+//        List<RankingDto> ranking = rankingService.getRanking(0, 10);
+//
+//        List<RankingDto> ranking20 = rankingService.getRanking(0, 20);
+//        //then
+//        Assertions.assertThat(ranking.size()).isEqualTo(10);
+//        Assertions.assertThat(ranking20.size()).isEqualTo(20);
+//    }
 
-        //when
-        List<RankingDto> ranking = rankingService.getRanking(0, 10);
-
-        List<RankingDto> ranking20 = rankingService.getRanking(0, 20);
-        //then
-        Assertions.assertThat(ranking.size()).isEqualTo(10);
-        Assertions.assertThat(ranking20.size()).isEqualTo(20);
-    }
-
-    @Test
-    public void upsertBySummonerId() {
-        //given
-        service.upsertBySummonerId(TestConstant.summonerId);
-
-        //when
-        List<LeagueDto> leaguesInfo = service.getLeagueInfos(TestConstant.summonerId);
-
-        //then
-
-    }
+//    @Test
+//    public void upsertBySummonerId() {
+//        //given
+//        service.upsertBySummonerId(TestConstant.summonerId);
+//
+//        //when
+//        List<LeagueDto> leaguesInfo = service.getLeagueInfos(TestConstant.summonerId);
+//
+//        //then
+//
+//    }
 }

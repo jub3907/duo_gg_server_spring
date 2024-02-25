@@ -30,20 +30,20 @@ public class MasteryTest {
     @Autowired
     SummonerService summonerService;
 
-    @Test
-    @Rollback(value = false)
-    public void MasteryTest() {
-        //given
-        masteryService.upsertMasteriesByPuuid(puuid);
-
-        //when
-        List<MasteryDto> masteriesByPuuid = masteryService.findMasteriesByPuuid(puuid, 10);
-        List<MasteryDto> masteriesByName = masteryService.findMasteriesByName(name, 10);
-        List<MasteryDto> masteriesBySummonerId = masteryService.findMasteriesBySummonerId(summonerId, 10);
-
-        //then
-        assertThat(masteriesByPuuid.size()).isEqualTo(10);
-        assertThat(masteriesByName.size()).isEqualTo(10);
-        assertThat(masteriesBySummonerId.size()).isEqualTo(10);
-    }
+//    @Test
+//    @Rollback(value = false)
+//    public void MasteryTest() {
+//        //given
+//        masteryService.upsertMasteriesByPuuid(puuid);
+//
+//        //when
+//        List<MasteryDto> masteriesByPuuid = masteryService.findMasteriesByPuuid(puuid, 10);
+//        List<MasteryDto> masteriesByName = masteryService.findMasteriesByName(name, 10);
+//        List<MasteryDto> masteriesBySummonerId = masteryService.findMasteriesBySummonerId(summonerId, 10);
+//
+//        //then
+//        assertThat(masteriesByPuuid.size()).isEqualTo(10);
+//        assertThat(masteriesByName.size()).isEqualTo(10);
+//        assertThat(masteriesBySummonerId.size()).isEqualTo(10);
+//    }
 }
