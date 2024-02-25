@@ -18,6 +18,8 @@ public class SecurityConfig implements WebMvcConfigurer {
     public void addCorsMappings(final CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000")
+                .allowedOrigins("http://15.164.184.9:3000")
+                .allowedOrigins("http://lolduo.kr")
                 .allowedMethods("GET", "POST", "DELETE");
     }
 
