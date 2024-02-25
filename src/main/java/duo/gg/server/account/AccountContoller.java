@@ -32,6 +32,7 @@ public class AccountContoller {
     @Transactional
     @PostMapping("/account/by-puuid")
     public ResponseEntity<String> upsertByPuuid(@RequestParam String puuid) {
+        log.info("puuid: {}", puuid);
         service.upsertAccountByPuuid(puuid);
         return new ResponseEntity<>(ResponseBody.SUCCESS, HttpStatus.OK);
     }
